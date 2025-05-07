@@ -145,7 +145,6 @@ class TemplateCardComponent extends HTMLElement
 		this.ownerDocument.querySelectorAll('[data-filter]').forEach(btn => {
 			btn.addEventListener('click', () => {
 				const filter = btn.dataset.filter;
-				console.log('📌 필터 클릭됨:', filter); 
 				this.filterCards(filter);
 			});
 		});
@@ -155,7 +154,6 @@ class TemplateCardComponent extends HTMLElement
 		const cards = this.listContainer.querySelectorAll('.template-item');
 		cards.forEach(card => {
 			const type = card.dataset.type;
-			console.log('  - 카드 타입:', type); 
 			card.style.display = (filter === 'all' || type === filter) ? 'block' : 'none';
 		});
 	}
