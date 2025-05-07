@@ -85,13 +85,29 @@
 // 	const template = temp.querySelector(`template#${id}`);
 // 	if (template) document.body.appendChild(template);
 // }
+class FooterComponent extends HTMLElement
+{
+	constructor()
+	{
+		super();
+		this.init();
+	}
 
-class HeaderComponent extends HTMLElement {
+	async init()
+	{
+		const success = await loadTemplate('footer', 'footer', this)
+		if(!success) return;
+	}
+}
+customElements.define('footer-component', FooterComponent);
+
+class HeaderComponent extends HTMLElement 
+{
 	constructor() 
 	{
 		super();
 		this.init();
-	}그
+	}
 
 	async init() 
 	{
