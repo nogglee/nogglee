@@ -1,4 +1,4 @@
-import { TEMPLATE_DATA } from './template.js';
+import { TEMPLATE_DATA } from '/template.js';
 
 export async function Start() 
 {
