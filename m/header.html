@@ -1,0 +1,94 @@
+<template id="header">
+	<style>
+		#navbar {
+			height: 60px;
+			color: #BEBEBC;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 10px 0; 
+		}
+		#logo {
+			width: 120px;
+			cursor: pointer;
+		}
+		#nav {
+			list-style: none;
+			display: flex;
+			gap: 10px;
+			font-size: 1rem;
+		}
+		.nav-items {
+			position: relative;
+			cursor: pointer;
+			font-weight: 400;
+			padding: 6px 12px;
+			border-radius: 4px;
+			background-color: #272520;
+		}
+		.nav-items:hover {
+			transition: color 0.5s ease;
+			color: #FAFAFA;
+			background-color: #161512;
+			z-index: 100;
+		}
+		.sub-nav {
+			position: absolute;
+			top: 0;
+			left: 0;
+			font-weight: 400;
+			font-size: 0.9rem;
+			color: #BEBEBC;
+			box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+			list-style: none;
+			padding: 4px;
+			margin: 0;
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.3s ease, transform 0.3s ease;
+			border-radius: 4px;
+			background: #161512;
+			transform: translateY(-10px);
+			cursor: pointer;
+		}
+		.nav-items:hover .sub-nav {
+			top: calc(100% + 3px);
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+		.sub-nav-items {
+			padding: 8px;
+			border-radius: 2px;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+		.sub-nav-items:hover {
+			background-color: rgba(255, 255, 255, 0.05);
+			color: white;
+		}
+		.sub-nav-items img {
+			width: 24px;
+		}
+	</style>
+
+	<div id="navbar">
+		<img id="logo" src="/logo.svg">
+		<nav>
+			<ul id="nav">
+				<li class="nav-items">소개</li>
+				<li class="nav-items">템플릿
+					<ul class="sub-nav">
+						<li class="sub-nav-items"><img src="/notion.svg">Notion</li>
+						<li class="sub-nav-items"><img src="/google.svg">GoogleSheets</li>
+						<li class="sub-nav-items"><img src="/figma.svg">Figma</li>
+					</ul>
+				</li>
+				<li class="nav-items">포트폴리오</li>
+				<li class="nav-items">B2B</li>
+			</ul>
+		</nav>
+
+	</div>
+</template>
