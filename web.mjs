@@ -48,53 +48,6 @@
 // //   }
 // //   customElements.define('custom-header', HeaderComponent);
 
-class HeaderComponent extends HTMLElement {
-	constructor() {
-	  super();
-	  const template = document.body.querySelector('template#header');
-	  if (!template) return;
-	  const content = template.content.cloneNode(true);
-	  this.attachShadow({ mode: 'open' }).appendChild(content);
-	}
-
-	connectedCallback() {
-		this.initEvents();
-	  }
-  
-	  initEvents() {
-		const shadow = this.shadowRoot;
-  
-		shadow.querySelectorAll('.nav-items').forEach(item => {
-		  item.addEventListener('click', () => {
-			const label = item.textContent.trim();
-  
-			if (label === '소개') loadPage('about');
-			else if (label === '템플릿') loadPage('template');
-			else if (label === '포트폴리오') loadPage('portfolio');
-			else if (label === 'B2B') loadPage('b2b');
-		  });
-		});
-  
-		shadow.querySelectorAll('.sub-nav-items').forEach(sub => {
-		  sub.addEventListener('click', () => {
-			const type = sub.textContent.trim().toLowerCase();
-			loadPage(`template?filter=${type}`);
-		  });
-		});
-	  }
-  }
-  customElements.define('custom-header', HeaderComponent);
-
-
-export async function loadPage(name) {
-	try {
-	  const res = await fetch(`/m/${name}.html`);
-	  const html = await res.text();
-	  document.getElementById('content').innerHTML = html;
-	} catch (err) {
-	  document.getElementById('content').innerHTML = `<p style="color:red">페이지 로딩 실패: ${name}</p>`;
-	}
-  }
 
 //   export async function Start() {
 // 	try {
@@ -125,44 +78,74 @@ export async function loadPage(name) {
 // 	}
 //   }
 
-function injectTemplate(html, id) {
-	const temp = document.createElement('div');
-	temp.innerHTML = html;
-	const template = temp.querySelector(`template#${id}`);
-	if (template) document.body.appendChild(template);
-  }
-  
-  export async function Start() {
-	try {
-	  // Fetch header.html, footer.html, and landing.html concurrently
-	  const [headerRes, footerRes, landingRes] = await Promise.all([
-		fetch('/m/header.html'),
-		fetch('/m/footer.html'),
-		fetch('/m/landing.html')
-	  ]);
-  
-	  const headerHtml = await headerRes.text();
-	  const footerHtml = await footerRes.text();
-	  const landingHtml = await landingRes.text();
-  
-	  // Inject header and footer templates into the body
-	  injectTemplate(headerHtml, 'header');
-	  injectTemplate(footerHtml, 'footer');
-  
-	  // Set body innerHTML with custom-header, main content, and custom-footer
-	  document.body.innerHTML = `
-		<custom-header></custom-header>
-		<main id="content">${landingHtml}</main>
-		<custom-footer></custom-footer>
-	  `;
-  
-	  // Create and prepend custom-header and append custom-footer elements
-	//   const headerElement = document.createElement('custom-header');
-	//   const footerElement = document.createElement('custom-footer');
-	//   document.body.prepend(headerElement);
-	//   document.body.appendChild(footerElement);
-  
-	} catch (err) {
-	  document.body.innerHTML = `<p style="color:red">Landing 페이지를 불러오는 데 실패했습니다.</p>`;
+// function injectTemplate(html, id) 
+// {
+// 	const temp = document.createElement('div');
+// 	temp.innerHTML = html;
+// 	const template = temp.querySelector(`template#${id}`);
+// 	if (template) document.body.appendChild(template);
+// }
+
+class HeaderComponent extends HTMLElement {
+	constructor() 
+	{
+		super();
+		this.init();
+	}그
+
+	async init() 
+	{
+		const success = await loadTemplate('header', 'header', this);
+		if (!success) return;
+
+		// this.querySelectorAll('.nav-items').forEach(item => {
+		// 	const page = item.dataset.name;
+		// 	if (page) item.addEventListener('click', () => loadPage(page));
+		// });
 	}
+}
+customElements.define('header-component', HeaderComponent);
+
+export async function loadPage(pageName, targetElement) 
+{	
+	try 
+	{
+		const html = await (await fetch(`/m/${pageName}.html`)).text();
+		targetElement.innerHTML = html;
+	} 
+	catch 
+	{
+		targetElement.innerHTML = `<p style="color:red">${pageName} 로딩 실패</p>`;
+	}
+}
+
+export async function loadTemplate(pageName, templateId, targetElement)
+{
+	try
+	{
+		const html = await (await fetch(`/m/${pageName}.html`)).text();
+
+		const container = document.createElement('div');
+		container.innerHTML = html;
+
+		const template = container.querySelector(`template#${templateId}`);
+		if (template)
+		{
+			const clone = template.content.cloneNode(true);
+			targetElement.appendChild(clone);
+		}
+		else
+		{
+			targetElement.innerHTML = html;
+		}
+	}
+	catch
+	{
+		targetElement.innerHTML = `<p style="color:red">${pageName} 로딩 실패</p>`;
+	}
+}
+
+export async function Start() 
+{
+	await loadPage('landing', document.getElementById('content'));
 }
