@@ -1,4 +1,4 @@
-import { TemplateDatas } from './template.js';
+import { TEMPLATE_DATA } from './template.js';
 
 export async function Start() 
 {
@@ -76,11 +76,37 @@ class HeaderComponent extends HTMLElement
 		if (!success) return;
 
 		this.querySelectorAll('.nav-items').forEach(item => {
-			const subMenu = item.dataset.name;
-			if (subMenu) {
-				item.addEventListener('click', () => {
-					console.log('subMenu 클릭됨:', subMenu);
-					loadPagePart(`${subMenu}`, document.getElementById('content'));
+			const mainMenu = item.dataset.name;
+			if (mainMenu) 
+			{
+				item.addEventListener('click', async (e) => {
+					if (e.target.closest('.sub-nav-items')) return;
+					
+					await loadPagePart(`${mainMenu}`, document.getElementById('content'));
+					if(mainMenu === 'templatelist') {document.querySelector('[data-filter="all"]')?.click();}
+				});
+			}
+		});
+
+		this.querySelectorAll('.sub-nav-items').forEach(item => {
+			const filterType = item.dataset.name;
+			if (filterType) 
+			{
+				item.addEventListener('click', async (e) => {
+					
+					await loadPagePart('templatelist', document.getElementById('content'));
+					
+					const waitForComponent = async () => {
+						
+						const component = document.querySelector('template-card-component');
+						if (component && typeof component.filterCards === 'function') 
+						{
+							await component.ready;
+							component.filterCards(filterType);
+						} 
+					};
+					waitForComponent();
+
 				});
 			}
 		});
@@ -93,7 +119,7 @@ class TemplateCardComponent extends HTMLElement
 	constructor()
 	{
 		super();
-		this.init();
+		this.ready = this.init();
 	}
 	
 	async init() 
@@ -101,18 +127,36 @@ class TemplateCardComponent extends HTMLElement
 		const success = await loadTemplate('templateitem', 'template-card-component', this);
 		if (!success) return;
 
-		const cardTemplate = this.querySelector('#template-item');
-		const listContainer = this.parentElement;
+		this.listContainer = this.parentElement;
+		const cardTemplate = this.listContainer.querySelector('.template-item');
+		this.listContainer.innerHTML = ''
+		if (!cardTemplate) return;
 
-		if (!cardTemplate || !listContainer) return;
-
-		TemplateDatas.forEach(item => {
+		TEMPLATE_DATA.forEach(item => {
 			const card = cardTemplate.cloneNode(true);
 			card.querySelector('.template-title').textContent = item.title;
 			card.querySelector('.template-desc').textContent = item.description;
 			card.querySelector('.template-link').href = item.link;
 			card.querySelector('iframe').src = item.video;
-			listContainer.appendChild(card);
+			card.dataset.type = item.type;
+			this.listContainer.appendChild(card);
+		});
+
+		this.ownerDocument.querySelectorAll('[data-filter]').forEach(btn => {
+			btn.addEventListener('click', () => {
+				const filter = btn.dataset.filter;
+				console.log('📌 필터 클릭됨:', filter); 
+				this.filterCards(filter);
+			});
+		});
+	
+	}
+	filterCards(filter) {
+		const cards = this.listContainer.querySelectorAll('.template-item');
+		cards.forEach(card => {
+			const type = card.dataset.type;
+			console.log('  - 카드 타입:', type); 
+			card.style.display = (filter === 'all' || type === filter) ? 'block' : 'none';
 		});
 	}
 }

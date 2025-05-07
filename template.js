@@ -1,4 +1,4 @@
-export const TemplateDatas = 
+export const TEMPLATE_DATA = 
 [
 	{
 		title: '웨딩 플래너',
@@ -11,7 +11,7 @@ export const TemplateDatas =
 	{
 		title: '가계부 시트',
 		description: '구글시트 기반 가계부 템플릿입니다.',
-		type: 'googlesheets',
+		type: 'sheets',
 		link: '#',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
 		image: '/thumbnail.png'
