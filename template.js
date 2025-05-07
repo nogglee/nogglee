@@ -1,5 +1,4 @@
-export const TEMPLATE_DATA = 
-[
+export const TEMPLATE_DATA = [
 	{
 		title: '웨딩 플래너',
 		description: '결혼 준비를 위한 노션 템플릿입니다.',

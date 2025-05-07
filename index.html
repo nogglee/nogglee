@@ -5,20 +5,12 @@
 		<title>NOGGLEE</title>
 
 		<style>@import '/m/web.css';</style>
-
-
-
-
-		<script src="https://accounts.google.com/gsi/client" async defer></script>
-		<script>
-			window.onload = async () => {await (await import('/web.mjs')).Start();}
-			window.kakaoAsyncInit = () => {Kakao.Channel.createChatButton({container:'#kakao-talk-channel-chat-button'});};
-		</script>
+		<script>window.onload = async () => { await (await import('/web.mjs')).Start(); }</script>
 
 	</head>
 	<body>
 		<header-component></header-component>
 		<main id="content"></main>
-		<footer-component></footer-compon>
+		<footer-component></footer-component>
 	</body>
 </html>
