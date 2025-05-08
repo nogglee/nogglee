@@ -83,7 +83,22 @@ class HeaderComponent extends HTMLElement
 					if (e.target.closest('.sub-nav-items')) return;
 					
 					await loadPagePart(`${mainMenu}`, document.getElementById('content'));
-					if(mainMenu === 'templatelist') {document.querySelector('[data-filter="all"]')?.click();}
+					if (mainMenu === 'templatelist') 
+					{
+						const waitForComponent = async () => {
+							const component = document.querySelector('template-card-component');
+							if (component && typeof component.filterCards === 'function') 
+							{
+								await component.ready;
+								component.filterCards('all');
+							}
+							else
+							{
+								setTimeout(waitForComponent, 10);
+							}
+						};
+						waitForComponent();
+					}
 				});
 			}
 		});
@@ -150,11 +165,22 @@ class TemplateCardComponent extends HTMLElement
 		});
 	
 	}
-	filterCards(filter) {
+	filterCards(filter) 
+	{
 		const cards = this.listContainer.querySelectorAll('.template-item');
 		cards.forEach(card => {
 			const type = card.dataset.type;
 			card.style.display = (filter === 'all' || type === filter) ? 'block' : 'none';
+		});
+
+		this.ownerDocument.querySelectorAll('[data-filter]').forEach(btn => {
+			if (btn.dataset.filter === filter) {
+				console.log(btn.dataset.filter);;
+				console.log(filter);
+				btn.classList.add('active');
+			} else {
+				btn.classList.remove('active');
+			}
 		});
 	}
 }
