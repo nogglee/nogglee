@@ -59,6 +59,10 @@ class FooterComponent extends HTMLElement
 	{
 		const success = await loadTemplate('footer', 'footer', this)
 		if(!success) return;
+
+		this.querySelector('#github').addEventListener('click', () => window.open('https://github.com/nogglee', '_blank'));
+		this.querySelector('#velog').addEventListener('click', () => window.open('https://velog.io/@nogglee/posts', '_blank'));
+		this.querySelector('#email').addEventListener('click', () => window.location.href = 'mailto:pm@nogglee.com?subject=문의&body=협업은 언제든지 환영합니다! 문의할 내용을 작성해 주세요.');
 	}
 }
 customElements.define('footer-component', FooterComponent);
@@ -74,6 +78,8 @@ class HeaderComponent extends HTMLElement
 	{
 		const success = await loadTemplate('header', 'header', this);
 		if (!success) return;
+		
+		this.querySelector('#logo').addEventListener('click', () => loadPagePart('landing', document.getElementById('content')));
 
 		this.querySelectorAll('.nav-items').forEach(item => {
 			const mainMenu = item.dataset.name;

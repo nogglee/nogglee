@@ -3,15 +3,8 @@ body {
     font-size:16px;
     margin:0px;
     padding:0px 8%;
-    max-width: 960px;
+	max-width: 1440px;
     margin: 0px auto;
     background-color: #272520;
     height: 100%;
-}
-
-#kakao-talk-channel-chat-button {
-    position: fixed;
-    bottom: 10px;
-    right: 16px;
-    z-index: 1000;
 }

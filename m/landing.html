@@ -1,33 +1,28 @@
 <style>
 	.hero {
-		height: 84vh;
+		height: 100%;
 		display: flex;
-		align-items: center;
+		align-items: top;
 		justify-content: center;
-		text-align: left;
+		text-align: center;
 		width: 100%;
+		margin: 12rem 0;
 	}
 
 	.subtitle {
-		font-size: 1.25rem;
-		color: #FFB86F;
-		margin-bottom: 0.5rem;
+		color: white;
+		font-size: 3rem;
+		font-weight: 500;
+		margin: 0 0 0.3rem 0;
+		letter-spacing: 0.05em;
 	}
 
 	.title {
 		color: white;
-		font-size: 2.75rem;
-		font-weight: 800;
-		line-height: 1.4;
-		margin: 0 0 1rem 0;
-	}
-
-	.title-subtle {
-		color: rgba(225, 225, 225, 0.7);
-		font-size: 2.75rem;
-		font-weight: 600;
-		line-height: 1.4;
-		margin: 0 0 1rem 0;
+		font-size: 3rem;
+		font-weight: 700;
+		margin: 0 0 0.3rem 0;
+		letter-spacing: 0.03em;
 	}
 
 	.highlight {
@@ -35,11 +30,15 @@
 	}
 
 	.description {
-		font-size: 1.8rem;
+		font-size: 2rem;
 		font-weight: 300;
 		line-height: 1.6;
-		margin-bottom: 2rem;
-		color: rgba(225, 225, 225, 0.7);
+		margin-bottom: 2.5rem;
+		color: white;
+	}
+
+	strong {
+		font-weight: 600;
 	}
 
 	.cta-button {
@@ -59,19 +58,13 @@
 </style>
 
 <body>
-	<custom-header></custom-header>
-  <section class="hero">
-    <div class="hero-content">
-      <p class="subtitle">안녕하세요,</p>
-      <h1 class="title">기획하는 개발자<span class="highlight">노글리</span>입니다.</h1>
-	  <h1 class="title-subtle">'도구를 넘어 구조를 설계하는 일'에 매료되어<br>
-		효율적이고 유기적인 협업 환경을 구축합니다.</h1>
-      <p class="description">
-		노글리는 단순히 결과물을 만드는 데 그치지 않고,<br>
-        일의 흐름이 자연스럽게 작동하도록 시스템을 설계합니다.<br>
-        불필요한 관리 없이, 핵심 업무에 집중할 수 있도록 돕습니다.
-      </p>
-      <a href="#templates" class="cta-button">지금 바로 문의하기</a>
-    </div>
-  </section>
+	<section class="hero">
+		<div class="hero-content">
+			<p class="title"></p>
+			<h1 class="title">기획자의 눈으로 일하는 개발자는</h1>
+			<h1 class="title">제품의 <span class="highlight">의도</span>와 <span class="highlight">맥락</span>을 놓치지 않습니다.</h1>
+			<p class="description">Why부터 How까지 노글리와 소통하며<br>커뮤니케이션 리스크를 줄여보세요.</p>
+			<a href="#templates" class="cta-button">지금 바로 문의하기</a>
+		</div>
+	</section>
 </body>

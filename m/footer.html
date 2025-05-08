@@ -7,28 +7,28 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			height: 8rem;
 		}
 		span {
 			align-items: center;
 		}
-		#social-button-group {
+		.social-button-group {
 			display: flex;
 			gap: 10px;
 			align-items: center;
 		}
-		#social-button-group img{
+		.social-button-group img{
 			cursor: pointer;
 			width: 24px;
 		}
 	</style>
 
 	<div id="footer-container">
-		<div id="social-button-group">
-			<img src="/m/github.svg" alt="github" onclick="window.open('https://github.com/nogglee', '_blank')">
-			<img src="/m/velog.svg" alt="velog" onclick="window.open('https://https://velog.io/@nogglee/posts', '_blank')">
-			<img src="/m/mail.svg" alt="velog"
-				onclick="window.location.href='mailto:pm@nogglee.com?subject=문의&body=협업은 언제든지 환영합니다! 문의할 내용을 작성해 주세요.'">
-			</div>
+		<div class="social-button-group">
+			<img src="/m/github.svg" id="github" alt="github">
+			<img src="/m/velog.svg" id="velog" alt="velog">
+			<img src="/m/mail.svg" id="email" alt="email">
+		</div>
 			<span>Copyright ⓒ 2025 NOGGLEE All rights reserved.</span>
 	</div>
 </template>
