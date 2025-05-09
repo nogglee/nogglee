@@ -3,6 +3,9 @@ import { TEMPLATE_DATA } from '/template.js?v=20240508';
 export async function Start() 
 {
 	await loadPagePart('landing', document.getElementById('content'));
+	document.querySelectorAll('.cta-button').forEach(button => {
+		button.addEventListener('click', () => window.open('http://pf.kakao.com/_sGhBn/chat', '_blank', 'width=400,height=600'));
+	});
 }
 
 export async function loadPagePart(pagePartName, targetElement) 

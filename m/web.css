@@ -1,10 +1,17 @@
+html {
+	scroll-behavior: smooth;
+}
 body {
     font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
     font-size:16px;
     margin:0px;
     padding:0px 8%;
-	max-width: 1440px;
+	max-width: 1280px;
     margin: 0px auto;
     background-color: #272520;
     height: 100%;
+}
+button {
+	cursor: pointer;
+	border: none;
 }
