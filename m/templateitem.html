@@ -1,6 +1,6 @@
 <template id="template-card-component">
 	<style>
-		.template-row {
+		.template_row {
 			display: flex;
 			flex-wrap: wrap;
 			gap: 32px;
@@ -9,7 +9,7 @@
 			justify-content: center;
 		}
 
-		.template-card {
+		.template_item {
 			flex: 1 1 300px;
 			max-width: 500px;
 			background-color: #ffffff;
@@ -20,24 +20,24 @@
 			transition: box-shadow 0.3s ease;
 		}
 
-		.template-card:hover {
+		.template_item:hover {
 			box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 		}
 
-		.template-title {
+		.template_title {
 			font-size: 1.4rem;
 			font-weight: 600;
 			margin: 0 0 12px 0;
 		}
 
-		.template-desc {
+		.template_desc {
 			font-size: 1rem;
 			color: #555;
 			line-height: 1.6;
 			margin-bottom: 16px;
 		}
 
-		.template-link {
+		.template_link {
 			display: inline-block;
 			text-decoration: none;
 			font-weight: 500;
@@ -46,33 +46,33 @@
 			transition: all 0.2s ease;
 		}
 
-		.template-link:hover {
+		.template_link:hover {
 			border-color: #0070f3;
 		}
 
-		.template-video {
+		.template_video {
 			flex: 1 1 300px;
 			max-width: 500px;
 			height: 300px;
 		}
 
-		.template-video iframe {
+		.template_video iframe {
 			width: 100%;
 			height: 100%;
 			border-radius: 8px;
 			box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 		}
 
-		.template-image {
+		.template_image {
 			width: 100%;
 		}
 	</style>
 
-	<div class="template-item">
-		<h3 class="template-title"></h3>
-		<p class="template-desc"></p>
-		<a class="template-link" target="_blank">템플릿 열기</a>
-		<div class="template-video">
+	<div class="template_item">
+		<h3 class="template_title"></h3>
+		<p class="template_desc"></p>
+		<a class="template_link" target="_blank">템플릿 열기</a>
+		<div class="template_video">
 			<iframe src="" frameborder="0" allowfullscreen></iframe>
 		</div>
 	</div>

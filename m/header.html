@@ -18,7 +18,7 @@
 			gap: 10px;
 			font-size: 1rem;
 		}
-		.nav-items {
+		.nav_items {
 			position: relative;
 			cursor: pointer;
 			font-weight: 400;
@@ -26,14 +26,14 @@
 			border-radius: 4px;
 			background-color: #272520;
 		}
-		.nav-items:hover {
+		.nav_items:hover {
 			font-size: 1rem;
 			transition: color 0.5s ease;
 			color: #FAFAFA;
 			background-color: #161512;
 			z-index: 100;
 		}
-		.sub-nav {
+		.sub_nav {
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -52,42 +52,42 @@
 			transform: translateY(-10px);
 			cursor: pointer;
 		}
-		.nav-items:hover .sub-nav {
+		.nav_items:hover .sub_nav {
 			top: calc(100% + 3px);
 			opacity: 1;
 			visibility: visible;
 			transform: translateY(0);
 		}
-		.sub-nav-items {
+		.sub_nav_items {
 			padding: 8px;
 			border-radius: 2px;
 			display: flex;
 			align-items: center;
 			gap: 8px;
 		}
-		.sub-nav-items:hover {
+		.sub_nav_items:hover {
 			background-color: rgba(255, 255, 255, 0.05);
 			color: white;
 		}
-		.sub-nav-items img {
+		.sub_nav_items img {
 			width: 24px;
 		}
 	</style>
 
 	<div id="navbar">
-		<img id="logo" src="/m/logo.svg">
+		<img id="logo" src="/m/a/logo.svg">
 		<nav>
 			<ul id="nav">
-				<li class="nav-items" data-name="about">소개</li>
-				<li class="nav-items" data-name="templatelist">템플릿
-					<ul class="sub-nav">
-						<li class="sub-nav-items" data-name="notion"><img src="/m/notion.svg">Notion</li>
-						<li class="sub-nav-items" data-name="sheets"><img src="/m/google.svg">GoogleSheets</li>
-						<li class="sub-nav-items" data-name="figma"><img src="/m/figma.svg">Figma</li>
+				<li class="nav_items" data-name="about">소개</li>
+				<li class="nav_items" data-name="templatelist">템플릿
+					<ul class="sub_nav">
+						<li class="sub_nav_items" data-name="notion"><img src="/m/a/notion.svg">Notion</li>
+						<li class="sub_nav_items" data-name="sheets"><img src="/m/a/google.svg">GoogleSheets</li>
+						<li class="sub_nav_items" data-name="figma"><img src="/m/a/figma.svg">Figma</li>
 					</ul>
 				</li>
-				<li class="nav-items" data-name="portfolio">포트폴리오</li>
-				<li class="nav-items" data-name="b2b">B2B</li>
+				<li class="nav_items" data-name="portfolio">포트폴리오</li>
+				<li class="nav_items" data-name="b2b">B2B</li>
 			</ul>
 		</nav>
 
