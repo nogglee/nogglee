@@ -1,18 +1,42 @@
 <style>
 	#hero {
-		height: 100%;
-		display: flex;
-		flex-direction: column;
+		height: 100vh;
 		align-items: top;
 		justify-content: center;
 		text-align: center;
 		width: 100%;
-		margin: 12rem 0;
+		margin: 8rem 0 0 0;
+	}
+
+	#overview {
+		position: relative;
+		width: 100vw;
+		background-color: #0B0B09;
+		left: 50%;
+		top: -20rem;
+		transform: translateX(-50%);
+	}
+
+	#overview p {
+		text-align: center;
+		font-size: 1.5rem;
+		line-height: 1.6;
+		color: white;
+		font-weight: 300;
+		margin: 3rem 0 0 0;
 	}
 
 	.title {
 		color: white;
 		font-size: 3.8rem;
+		font-weight: 700;
+		margin: 0 0 0.8rem 0;
+		letter-spacing: 0.03em;
+	}
+	
+	.sub_title {
+		color: white;
+		font-size: 2.5rem;
 		font-weight: 700;
 		margin: 0 0 0.8rem 0;
 		letter-spacing: 0.03em;
@@ -57,21 +81,35 @@
 		padding: 4rem 0;
 		gap: 4rem;
 	}
+	lottie-player {
+		width: 100%;
+		height: 6rem;
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
 </style>
 
 <body>
 	<section id="hero">
-		<div class="hero_content">
-			<h1 class="title">기획자의 눈으로 일하는 개발자는</h1>
-			<h1 class="title">제품의 <span class="highlight">의도</span>와 <span class="highlight">맥락</span>을 놓치지 않습니다.</h1>
-			<p class="description">Why부터 How까지 노글리와 소통하며<br>커뮤니케이션 리스크를 줄여보세요.</p>
-			<button class="cta_button">지금 바로 문의하기</button>
-		</div>
+		<h1 class="title">기획자의 눈으로 일하는 개발자는</h1>
+		<h1 class="title">제품의 <span class="highlight">의도</span>와 <span class="highlight">맥락</span>을 놓치지 않습니다.</h1>
+		<p class="description">Why부터 How까지 노글리와 소통하며<br>커뮤니케이션 리스크를 줄여보세요.</p>
+		<button class="cta_button">지금 바로 문의하기</button>
 	</section>
-	<section id="2">
-		
+	<lottie-player src="/m/a/direction.json" background="transparent" speed="0.8" loop autoplay></lottie-player>
+	<section id="overview">
+		<h2 class="sub_title"><span class="highlight">맥락</span>을 이해하면 결과가 다릅니다</h2>
+		<p>
+			좋은 아이디어와 훌륭한 팀이 있어도<br>
+			결과물이 처음 의도와 다르게 나오는 경우가 있습니다.<br>
+			<br>
+			노글리는 기획 경험을 바탕으로, 제품의 맥락을 이해하며 개발합니다.<br>
+			단순한 기능 구현이 아닌, 의도에 맞는 결과물을 만드는 데 집중합니다.
+		</p>
 	</section>
-	<section id="3">
+	<section id="contact">
 		
 	</section>
 </body>
