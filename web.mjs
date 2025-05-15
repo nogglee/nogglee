@@ -3,6 +3,8 @@
 export async function Start() 
 {
 	await loadPagePart('landing', document.getElementById('content'));
+	await renderSelectedPreviews(TEMPLATE_DATA, '#preview_template .grid', [1, 2, 3]);
+	await renderSelectedPreviews(PORTFOLIO_DATA, '#preview_portfolio .grid', [1, 2, 3, 4, 5, 6]);
 
 	const form = document.getElementById('contact_form');
 	if (!form) return;
@@ -22,12 +24,15 @@ export async function Start()
 			});
 	});
 
-	document.querySelectorAll('.cta_button').forEach(
-		(ThisButton) => { ThisButton.onclick = () => { document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }) } }
-	);
+	// Re-bind .cta_button click handlers after landing content is loaded
 
-	renderSelectedPreviews(TEMPLATE_DATA, '#preview_template .grid', [1, 2, 3]);
-	renderSelectedPreviews(PORTFOLIO_DATA, '#preview_portfolio .grid', [1, 2, 3, 4, 5, 6]);
+	document.querySelectorAll('.cta_button').forEach((ThisButton) => {
+		ThisButton.onclick = () => {
+			document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+		};
+	});
+
+
 }
 
 // data
@@ -153,14 +158,16 @@ class HeaderComponent extends HTMLElement
 		const success = await loadTemplate('header', 'header', this);
 		if (!success) return;
 		
-		this.querySelector('#logo').addEventListener('click', () => loadPagePart('landing', document.getElementById('content')));
+		this.querySelector('#logo').addEventListener('click', () => Start());
 
 		this.querySelectorAll('.nav_items').forEach(item => {
 			const mainMenu = item.dataset.name;
 			if (mainMenu === 'contact') {
 				item.addEventListener('click', async () => {
-					await loadPagePart('landing', document.getElementById('content'));
-					document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+					await Start();
+					setTimeout(() => {
+						window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+					}, 100);
 				});
 			}
 			else if (mainMenu) 
