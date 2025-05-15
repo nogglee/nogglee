@@ -1,0 +1,51 @@
+<template id="portfolio-card-component">
+	<style>
+		.portfolio_item {
+			flex: 1 1 300px;
+			max-width: 500px;
+			background-color: #ffffff;
+			border-radius: 12px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+			padding: 24px;
+			box-sizing: border-box;
+			transition: box-shadow 0.3s ease;
+		}
+
+		.portfolio_item:hover {
+			box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+		}
+
+		.portfolio_title {
+			font-size: 1.4rem;
+			font-weight: 600;
+			margin: 0 0 12px 0;
+		}
+
+		.portfolio_desc {
+			font-size: 1rem;
+			color: #555;
+			line-height: 1.6;
+			margin-bottom: 16px;
+		}
+
+		.portfolio_link {
+			display: inline-block;
+			text-decoration: none;
+			font-weight: 500;
+			color: #0070f3;
+			border-bottom: 1px solid transparent;
+			transition: all 0.2s ease;
+		}
+
+		.portfolio_link:hover {
+			border-color: #0070f3;
+		}
+	</style>
+	
+	<div class="portfolio_item">
+		<h3 class="portfolio_title"></h3>
+		<p class="portfolio_desc"></p>
+		<a class="portfolio_link" href="" target="_blank" rel="noopener noreferrer"></a>
+	</div>
+	
+</template>

@@ -1,0 +1,27 @@
+<style>
+	#portfolio_filter_menu button {
+		transition: background-color 0.2s ease;
+		background-color: white;
+		border: none;
+		color: #000;
+		padding: 8px 16px;
+		border-radius: 8px;
+		cursor: pointer;
+	}
+
+	#portfolio_filter_menu button.active {
+		background-color: #161512;
+		color: #FAFAFA;
+	}
+</style>
+<div class="wrap">
+	<div id="portfolio_filter_menu">
+		<button data-filter="all">전체</button>
+		<button data-filter="plans">기획 컨설팅</button>
+		<button data-filter="tools">협업 툴 세팅</button>
+		<button data-filter="apps">웹/앱 제작</button>
+	</div>
+	<div id="portfolio_list">
+		<portfolio-card-component></portfolio-card-component>
+	</div>
+</div>
