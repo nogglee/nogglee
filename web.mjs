@@ -102,7 +102,7 @@ const PORTFOLIO_DATA = [
 		type: 'tools',
 		link: '#',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/p/p_01.svg'
+		image: '/m/a/p/p_04.svg'
 	},
 	{
 		id: 5,
@@ -111,7 +111,7 @@ const PORTFOLIO_DATA = [
 		type: 'plans',
 		link: '#',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/p/p_02.svg'
+		image: '/m/a/p/p_05.svg'
 	},
 	{
 		id: 6,
@@ -120,7 +120,7 @@ const PORTFOLIO_DATA = [
 		type: 'plans',
 		link: '#',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/p/p_03.svg'
+		image: '/m/a/p/p_06.svg'
 	}
 ];
 
