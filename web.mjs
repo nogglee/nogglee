@@ -41,29 +41,29 @@ const TEMPLATE_DATA = [
 	{
 		id: 1,
 		title: 'PM을 위한 프로젝트 관리',
-		description: '시간 관리를 위한 노션 템플릿입니다.',
+		description: '업무 분배에 최적화된 템플릿입니다. 업무 우선순위, 마감일, 진행 현황까지 한눈에 파악할 수 있습니다.',
 		type: 'notion',
 		link: 'https://www.notion.com/ko/templates/pm',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0mm',
-		image: '/m/a/thumbnail.png'
+		image: '/m/a/t/t_01.svg'
 	},
 	{
 		id: 2,
-		title: '가계부 시트',
-		description: '구글시트 기반 가계부 템플릿입니다.',
+		title: 'PM을 위한 WBS',
+		description: '일정 관리에 최적화된 템플릿입니다. 담당자, 마감일, 진척도를 시각적으로 확인하며 실행 중심의 일정관리가 가능합니다.',
 		type: 'sheets',
-		link: '#',
+		link: 'https://docs.google.com/spreadsheets/d/1ceGJy4js9K6_IFYVcwGDFlxyX54nE7afUDcxcG7fneg/edit?usp=sharing',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/thumbnail.png'
+		image: '/m/a/t/t_02.svg'
 	},
 	{
 		id: 3,
-		title: '일정 관리 보드',
-		description: '프로젝트 일정을 관리하는 노션 보드입니다.',
-		type: 'notion',
-		link: '#',
+		title: '스토리보드',
+		description: '아이디어를 시각적으로 정리할 수 있는 스토리보드 템플릿입니다. 기획안의 핵심 흐름을 팀과 공유할 수 있습니다.',
+		type: 'figma',
+		link: 'https://www.figma.com/community/file/1500835421501275212/storybaord',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/thumbnail.png'
+		image: '/m/a/t/t_03.svg'
 	}
 ];
 
@@ -75,7 +75,7 @@ const PORTFOLIO_DATA = [
 		type: 'plans',
 		link: 'https://www.notion.com/ko/templates/pm',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0mm',
-		image: '/m/a/thumbnail.png'
+		image: '/m/a/p/p_01.svg'
 	},
 	{
 		id: 2,
@@ -84,7 +84,7 @@ const PORTFOLIO_DATA = [
 		type: 'tools',
 		link: '#',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/thumbnail.png'
+		image: '/m/a/p/p_02.svg'
 	},
 	{
 		id: 3,
@@ -93,7 +93,7 @@ const PORTFOLIO_DATA = [
 		type: 'apps',
 		link: '#',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/thumbnail.png'
+		image: '/m/a/p/p_03.svg'
 	},
 	{
 		id: 4,
@@ -102,7 +102,7 @@ const PORTFOLIO_DATA = [
 		type: 'apps',
 		link: '#',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/thumbnail.png'
+		image: '/m/a/p/p_01.svg'
 	},
 	{
 		id: 5,
@@ -111,7 +111,7 @@ const PORTFOLIO_DATA = [
 		type: 'apps',
 		link: '#',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/thumbnail.png'
+		image: '/m/a/p/p_02.svg'
 	},
 	{
 		id: 6,
@@ -120,7 +120,7 @@ const PORTFOLIO_DATA = [
 		type: 'apps',
 		link: '#',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/thumbnail.png'
+		image: '/m/a/p/p_03.svg'
 	}
 ];
 
