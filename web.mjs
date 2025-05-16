@@ -70,8 +70,8 @@ const TEMPLATE_DATA = [
 const PORTFOLIO_DATA = [
 	{
 		id: 1,
-		title: '포트폴리오01',
-		description: '시간 관리를 위한 노션 템플릿입니다.',
+		title: '시장 조사 기반의 IR 문서 작성',
+		description: '시장과 경쟁사를 분석하고, 투자자 관점에서 매력적으로 보이도록 IR 문서를 기획·작성했습니다.',
 		type: 'plans',
 		link: 'https://www.notion.com/ko/templates/pm',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0mm',
@@ -79,8 +79,8 @@ const PORTFOLIO_DATA = [
 	},
 	{
 		id: 2,
-		title: '포트폴리오02',
-		description: '구글시트 기반 가계부 템플릿입니다.',
+		title: '자동화된 주간보고 시스템 구축',
+		description: '담당자가 날짜 계산 없이도 리포트를 작성할 수 있도록 자동화된 주차 계산 로직을 데이터베이스에 적용했습니다.',
 		type: 'tools',
 		link: '#',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
@@ -88,8 +88,8 @@ const PORTFOLIO_DATA = [
 	},
 	{
 		id: 3,
-		title: '포트폴리오03',
-		description: '프로젝트 일정을 관리하는 노션 보드입니다.',
+		title: 'POS 시스템 개발',
+		description: '상품, 재고, 고객, 매출까지 통합 관리할 수 있는 POS 프로그램을 기획하고 개발했습니다.',
 		type: 'apps',
 		link: '#',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
@@ -97,27 +97,27 @@ const PORTFOLIO_DATA = [
 	},
 	{
 		id: 4,
-		title: '포트폴리오04',
-		description: '프로젝트 일정을 관리하는 노션 보드입니다.',
-		type: 'apps',
+		title: '노션 / 구글시트 자동 연동',
+		description: '보안 이슈로 인해 노션 사용이 어려운 고객사를 위해, 데이터를 자동 전송하는 구글시트 연동 시스템을 구축했습니다.',
+		type: 'tools',
 		link: '#',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
 		image: '/m/a/p/p_01.svg'
 	},
 	{
 		id: 5,
-		title: '포트폴리오05',
-		description: '프로젝트 일정을 관리하는 노션 보드입니다.',
-		type: 'apps',
+		title: '흐름 중심의 서비스 기획',
+		description: '스토리보드와 플로우차트를 기반으로, 사용자 흐름과 기능 정의를 명확히 정리했습니다.',
+		type: 'plans',
 		link: '#',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
 		image: '/m/a/p/p_02.svg'
 	},
 	{
 		id: 6,
-		title: '포트폴리오06',
-		description: '프로젝트 일정을 관리하는 노션 보드입니다.',
-		type: 'apps',
+		title: '디자인 시스템 구축',
+		description: '컴포넌트 중심의 디자인 시스템을 설계하여 개발과 협업 효율을 높였습니다.',
+		type: 'plans',
 		link: '#',
 		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
 		image: '/m/a/p/p_03.svg'
