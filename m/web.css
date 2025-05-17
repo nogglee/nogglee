@@ -15,3 +15,20 @@ button {
 .wrap {
 	padding: 0px 20%;
 }
+#contact_form select {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+
+	background-color: white;
+	border: 1px solid #ffc83d;
+	border-radius: 8px;
+	padding: 1rem;
+	font-size: 1rem;
+	color: black;
+	background-image: url('/m/a/icon_arrow.svg');
+	background-repeat: no-repeat;
+	background-position: right 1rem center;
+	background-size: 1rem;
+	cursor: pointer;
+}

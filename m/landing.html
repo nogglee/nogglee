@@ -153,10 +153,18 @@
 	}
 
 	#contact_form input,
-	#contact_form textarea {
+	#contact_form textarea,
+	#contact_form select {
 		border-radius: 8px;
 		border: 1px solid #161512;
 		padding: 1rem;
+		font-size: 1rem;
+		cursor: auto;
+	}
+	#contact_form input:focus,
+	#contact_form textarea:focus,
+	#contact_form select:focus {
+		outline: 2px solid #ffc83d;
 	}
 </style>
 
@@ -227,8 +235,15 @@
 			<h2 class="sub_title"><span class="highlight">아이디어</span>가 있다면 시작해볼까요?</h2>
 			<form id="contact_form" action="https://formspree.io/f/xvolpyvz" method="POST">
 				<input type="text" name="user_name" placeholder="이름" required>
-				<input type="text" name="user_email" placeholder="이메일" required>
-				<textarea name="message" placeholder="메시지" rows="5" required></textarea>
+				<input type="text" name="user_contact" placeholder="전화번호나 이메일 등 연락 가능한 정보를 입력해 주세요" required>
+				<select name="category" required>
+					<option value="">문의 카테고리</option>
+					<option value="기획컨설팅">기획 컨설팅</option>
+					<option value="협업툴세팅">협업 툴 세팅</option>
+					<option value="웹앱제작">웹/앱 제작</option>
+				</select>
+				<textarea name="message" placeholder="문의 내용을 입력해 주세요(24시간 안에 답변 드리겠습니다 :D)" rows="5"></textarea>
+				<br>
 				<button type="submit" class="button_main form_button">보내기</button>
 			</form>
 		</section>
