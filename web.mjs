@@ -13,10 +13,8 @@ export async function Start()
 	// In-app browser detection and notice
 	const isInApp = /(kakaotalk|line|instagram|naver|everytime|electron|daum|fb_iab|fb4a|fbios|fban|whatsapp|band|zumapp|aliapp|whale|trill|snapchat|samsungbrowser)/i.test(ua);
 	if (isInApp) {
-		const contentWrap = document.querySelector('#content');
-		if (contentWrap) {
-			await loadPagePart('test', document.getElementById('content'));
-		}
+		await loadPagePart('test', document.getElementById('content'));
+		return;
 	}
 
 
