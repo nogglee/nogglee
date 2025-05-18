@@ -2,14 +2,33 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export async function Start() 
 {
-	const ua = navigator.userAgent.toLowerCase();
-	const isMobile = /mobi|mobile|iphone|ipod|android|blackberry|iemobile|opera mini/.test(ua);
-	const isAlreadyOnM = location.host.startsWith('m.');
+	// const ua = navigator.userAgent.toLowerCase();
+	// const isMobile = /mobi|mobile|iphone|ipod|android|blackberry|iemobile|opera mini/.test(ua);
+	// const isAlreadyOnM = location.host.startsWith('m.');
 
-	if (isMobile && !isAlreadyOnM) {
-		window.location.replace('https://m.nogglee.com' + window.location.pathname + window.location.search + window.location.hash);
-		return;
+	// if (isMobile && !isAlreadyOnM) {
+	// 	window.location.replace('https://m.nogglee.com' + window.location.pathname + window.location.search + window.location.hash);
+	// 	return;
+	// }
+	// In-app browser detection and notice
+	const isInApp = /(kakaotalk|line|instagram|naver|everytime|electron|daum|fb_iab|fb4a|fbios|fban|whatsapp|band|zumapp|aliapp|whale|trill|snapchat|samsungbrowser)/i.test(ua);
+	if (isInApp) {
+		const contentWrap = document.querySelector('.wrap');
+		if (contentWrap) {
+			contentWrap.insertAdjacentHTML('afterbegin', `
+					<div class="inapp_notice" style="background-color:#fff3cd;padding:1rem;border-radius:8px;margin-bottom:1rem;color:#856404;text-align:center;">
+						인앱 브라우저에서는 일부 기능이 제한될 수 있습니다.<br>
+						아래 버튼을 눌러 외부 브라우저에서 열어주세요.
+						<br><br>
+						<button id="openExternally" class="button_main" style="margin-top:0.5rem;">외부 브라우저에서 열기</button>
+					</div>
+				`);
+			document.querySelector('#openExternally')?.addEventListener('click', () => {
+				window.open(location.href, '_blank');
+			});
+		}
 	}
+
 
 	await loadPagePart('landing', document.getElementById('content'));
 	await renderSelectedPreviews(TEMPLATE_DATA, '#preview_template .grid', [1, 2, 3]);
