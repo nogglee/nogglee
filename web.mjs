@@ -2,72 +2,48 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export async function Start() 
 {
-	// const isMobile = /mobi|mobile|iphone|ipod|android|blackberry|iemobile|opera mini/.test(ua);
-	// const isAlreadyOnM = location.host.startsWith('m.');
+	// var useragt = navigator.userAgent.toLowerCase();
+	// var target_url = location.href;
+	// const isInApp = /(kakaotalk|line|instagram|naver|everytime|electron|daum|fb_iab|fb4a|fbios|fban|whatsapp|band|zumapp|aliapp|whale|trill|snapchat|samsungbrowser)/i.test(useragt);
 
-	// if (isMobile && !isAlreadyOnM) {
-	// 	window.location.replace('https://m.nogglee.com' + window.location.pathname + window.location.search + window.location.hash);
-	// 	return;
-	// }
-	// In-app browser detection and notice
-
-
-	// const ua = navigator.userAgent.toLowerCase();
-	// const isInApp = /(kakaotalk|line|instagram|naver|everytime|electron|daum|fb_iab|fb4a|fbios|fban|whatsapp|band|zumapp|aliapp|whale|trill|snapchat|samsungbrowser)/i.test(ua);
 	// if (isInApp) {
-	// 	const contentWrap = document.getElementById('content');
-	// 	if (contentWrap) {
-	// 		contentWrap.innerHTML = `
-	// 			<div style="padding: 2rem; font-family: sans-serif; text-align: center;">
-	// 				<p style="font-size: 1.2rem;">인앱 브라우저에서는 일부 기능이 제한될 수 있습니다.<br>외부 브라우저(Safari 또는 Chrome)에서 열어주세요.</p>
-	// 				<br>
-	// 				<a href="${location.href}?from=inapp" target="_blank" rel="noopener noreferrer" class="button_main">
-	// 					외부 브라우저에서 열기
-	// 				</a>
-	// 				<br><br>
-	// 				<p style="font-size: 0.9rem; color: #888;">열리지 않으면 주소를 복사한 후 Safari에서 붙여넣기 해주세요.</p>
-	// 			</div>
-	// 		`;
+	// 	if (/kakaotalk/i.test(useragt)) {
+	// 		location.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(target_url);
 	// 	}
-	// 	return;
+	// 	if (/line/i.test(useragt)) {
+	// 		location.href = target_url + (target_url.includes('?') ? '&' : '?') + 'openExternalBrowser=1';
+	// 	}
 	// }
 
+	// async function loadLandingPageWithMobileRedirect(targetElement) {
+	// 	const ua = navigator.userAgent.toLowerCase();
+	// 	const isMobile = /iphone|ipad|ipod|android|mobile/.test(ua);
+	// 	const isInApp = /(kakaotalk|line|instagram|naver|everytime|electron|daum|fb_iab|fb4a|fbios|fban|whatsapp|band|zumapp|aliapp|whale|trill|snapchat|samsungbrowser)/.test(ua);
+	// 	const isAlreadyOnM = location.host.startsWith('m.');
 
-	var useragt = navigator.userAgent.toLowerCase();
-	var target_url = location.href;
-	const isInApp = /(kakaotalk|line|instagram|naver|everytime|electron|daum|fb_iab|fb4a|fbios|fban|whatsapp|band|zumapp|aliapp|whale|trill|snapchat|samsungbrowser)/i.test(useragt);
+	// 	if (isMobile && !isInApp && !isAlreadyOnM) {
+	// 		location.replace('https://m.nogglee.com' + location.pathname + location.search + location.hash);
+	// 		return;
+	// 	}
 
-	if (isInApp) {
-		if (/kakaotalk/i.test(useragt)) {
-			location.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(target_url);
-		}
-		if (/line/i.test(useragt)) {
-			location.href = target_url + (target_url.includes('?') ? '&' : '?') + 'openExternalBrowser=1';
-		}
+	// 	try {
+	// 		const html = await (await fetch(`/m/landing.html`)).text();
+	// 		targetElement.innerHTML = html;
+	// 	} catch {
+	// 		targetElement.innerHTML = `<p style="color:red">landing 로딩 실패</p>`;
+	// 	}
+	// }
+	// await loadLandingPageWithMobileRedirect(document.getElementById('content'));
+
+	const ua = navigator.userAgent.toLowerCase();
+	const isMobile = /iphone|ipod|android|mobile|mobi/.test(ua);
+	const isAlreadyOnM = location.host.startsWith('m.');
+
+	if (isMobile && !isAlreadyOnM) {
+		location.replace('https://m.nogglee.com' + location.pathname + location.search + location.hash);
 	}
 
-	async function loadLandingPageWithMobileRedirect(targetElement) {
-		const ua = navigator.userAgent.toLowerCase();
-		const isMobile = /iphone|ipad|ipod|android|mobile/.test(ua);
-		const isInApp = /(kakaotalk|line|instagram|naver|everytime|electron|daum|fb_iab|fb4a|fbios|fban|whatsapp|band|zumapp|aliapp|whale|trill|snapchat|samsungbrowser)/.test(ua);
-		const isAlreadyOnM = location.host.startsWith('m.');
-
-		// ✅ 여기서 모바일이면 리디렉트
-		if (isMobile && !isInApp && !isAlreadyOnM) {
-			location.replace('https://m.nogglee.com' + location.pathname + location.search + location.hash);
-			return;
-		}
-
-		// ✅ landing.html 불러오기
-		try {
-			const html = await (await fetch(`/m/landing.html`)).text();
-			targetElement.innerHTML = html;
-		} catch {
-			targetElement.innerHTML = `<p style="color:red">landing 로딩 실패</p>`;
-		}
-	}
-	await loadLandingPageWithMobileRedirect(document.getElementById('content'));
-	// await loadPagePart('landing', document.getElementById('content'));
+	await loadPagePart('landing', document.getElementById('content'));
 	await renderSelectedPreviews(TEMPLATE_DATA, '#preview_template .grid', [1, 2, 3]);
 	await renderSelectedPreviews(PORTFOLIO_DATA, '#preview_portfolio .grid', [1, 2, 3, 4, 5, 6]);
 
