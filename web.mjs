@@ -39,11 +39,9 @@ export async function Start()
 	if (isInApp) {
 		if (/kakaotalk/i.test(useragt)) {
 			location.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(target_url);
-			return;
 		}
 		if (/line/i.test(useragt)) {
 			location.href = target_url + (target_url.includes('?') ? '&' : '?') + 'openExternalBrowser=1';
-			return;
 		}
 	}
 
