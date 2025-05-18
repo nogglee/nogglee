@@ -46,6 +46,12 @@ export async function Start()
 		}
 	}
 
+	const isMobile = /iphone|ipad|ipod|android|mobile/.test(navigator.userAgent.toLowerCase());
+	const isAlreadyOnM = location.host.startsWith('m.');
+
+	if (isMobile && !isAlreadyOnM) {
+		location.replace('https://m.nogglee.com' + location.pathname + location.search + location.hash);
+	}
 
 	await loadPagePart('landing', document.getElementById('content'));
 	await renderSelectedPreviews(TEMPLATE_DATA, '#preview_template .grid', [1, 2, 3]);
