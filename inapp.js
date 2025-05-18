@@ -1,16 +1,16 @@
 (function () {
-	const useragt = navigator.userAgent.toLowerCase();
-	const target_url = location.href;
+	const ua = navigator.userAgent.toLowerCase();
+	const href = window.location.href;
 
-	const isIOS = /iphone|ipad|ipod/i.test(useragt);
-	const isAndroid = /android/i.test(useragt);
-	const isMobile = /iphone|ipad|ipod|android|blackberry|iemobile|opera mini/i.test(useragt);
-	const isAlreadyOnMobileSubdomain = location.host.startsWith('m.');
-	const isInApp = useragt.match(/kakaotalk|line|inapp|naver|snapchat|wirtschaftswoche|thunderbird|instagram|everytimeapp|whatsapp|electron|wadiz|aliapp|zumapp|whale|kakaostory|band|twitter|daumapps|daumdevice\/mobile|fb_iab|fb4a|fban|fbios|fbss|trill|samsungbrowser\/[^1]/i);
+	const isIOS = /iphone|ipad|ipod/.test(ua);
+	const isAndroid = /android/.test(ua);
+	const isMobile = /iphone|ipad|ipod|android|mobile|blackberry|iemobile|opera mini/.test(ua);
+	const isAlreadyOnM = location.host.startsWith('m.');
+	const isInApp = /(kakaotalk|line|instagram|naver|everytime|electron|daum|fb_iab|fb4a|fbios|fban|whatsapp|band|zumapp|aliapp|whale|trill|snapchat|samsungbrowser)/i.test(ua);
 
 	if (isInApp) {
 		if (isAndroid) {
-			location.href = 'intent://' + target_url.replace(/^https?:\/\//, '') + '#Intent;scheme=https;package=com.android.chrome;end';
+			location.href = 'intent://' + href.replace(/^https?:\/\//, '') + '#Intent;scheme=https;package=com.android.chrome;end';
 		} else if (isIOS) {
 			document.body.innerHTML = `
 				<style>
@@ -40,7 +40,7 @@
 		return;
 	}
 
-	if (isMobile && !isAlreadyOnMobileSubdomain) {
+	if (isMobile && !isAlreadyOnM) {
 		window.location.replace('https://m.nogglee.com' + window.location.pathname + window.location.search + window.location.hash);
 	}
 })();
