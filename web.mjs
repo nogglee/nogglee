@@ -8,11 +8,23 @@ export async function Start()
 
 	if (isMobile && !isAlreadyOnM) {
 		location.replace('https://m.nogglee.com' + location.pathname + location.search + location.hash);
+		return;
 	}
 
-	await loadTemplate('header', 'header', document.getElementById('header'));
-	await loadTemplate('footer', 'footer', document.getElementById('footer'));
+	const headerContainer = document.getElementById('header_section');
+	if (headerContainer && !headerContainer.querySelector('header-component')) {
+		const headerEl = document.createElement('header-component');
+		headerContainer.appendChild(headerEl);
+	}
+
 	await loadPagePart('landing', document.getElementById('content'));
+
+	const footerContainer = document.getElementById('footer_section');
+	if (footerContainer && !footerContainer.querySelector('footer-component')) {
+		const footerEl = document.createElement('footer-component');
+		footerContainer.appendChild(footerEl);
+	}
+
 	await renderSelectedPreviews(TEMPLATE_DATA, '#preview_template .grid', [1, 2, 3]);
 	await renderSelectedPreviews(PORTFOLIO_DATA, '#preview_portfolio .grid', [1, 2, 3, 4, 5, 6]);
 
