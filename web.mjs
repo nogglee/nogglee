@@ -31,27 +31,43 @@ export async function Start()
 	const form = document.getElementById('contact_form');
 	if (!form) return;
 
-	emailjs.init(window.EMAILJS.PUBLIC_KEY);
+	emailjs.init('YV7YzVSbiOXcul-mG');
 
 	form.addEventListener('submit', function (e) {
 		e.preventDefault();
 
+		const submitButton = form.querySelector('button[type="submit"]');
+		if (submitButton) {
+			submitButton.dataset.originalText = submitButton.textContent;
+			submitButton.style.backgroundColor = '#C79800';
+			submitButton.textContent = '전송 중...';
+			submitButton.style.pointerEvents = 'none';
+		}
+
 		emailjs.sendForm(
-			window.EMAILJS.SERVICE_ID,
-			window.EMAILJS.TEMPLATE_ID,
+			'service_yjixszn',
+			'template_44zyocm',
 			this
 		)
 			.then(() => {
 				navigator.clipboard.writeText(`${form.message.value}`)
 				alert('문의해 주셔서 감사합니다.\n빠르게 검토 후 답변 드리겠습니다!');
 				form.reset();
-			}, (error) => {
+			})
+			.catch((error) => {
 				console.error('전송 실패:', error);
 				navigator.clipboard.writeText(`${form.message.value}`).then(() => {
 					alert('오류가 발생하여 문의내용을 클립보드에 복사했습니다.\n이메일로 직접 연락 주시면 감사하겠습니다.');
 				}).catch(err => {
 					console.error('클립보드 복사 실패:', err);
 				});
+			})
+			.finally(() => {
+				if (submitButton) {
+					submitButton.textContent = submitButton.dataset.originalText;
+					submitButton.style.backgroundColor = '#ffc83d';
+					submitButton.style.pointerEvents = 'auto';
+				}
 			});
 	});
 
