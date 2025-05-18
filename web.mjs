@@ -2,39 +2,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export async function Start() 
 {
-	// var useragt = navigator.userAgent.toLowerCase();
-	// var target_url = location.href;
-	// const isInApp = /(kakaotalk|line|instagram|naver|everytime|electron|daum|fb_iab|fb4a|fbios|fban|whatsapp|band|zumapp|aliapp|whale|trill|snapchat|samsungbrowser)/i.test(useragt);
-
-	// if (isInApp) {
-	// 	if (/kakaotalk/i.test(useragt)) {
-	// 		location.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(target_url);
-	// 	}
-	// 	if (/line/i.test(useragt)) {
-	// 		location.href = target_url + (target_url.includes('?') ? '&' : '?') + 'openExternalBrowser=1';
-	// 	}
-	// }
-
-	// async function loadLandingPageWithMobileRedirect(targetElement) {
-	// 	const ua = navigator.userAgent.toLowerCase();
-	// 	const isMobile = /iphone|ipad|ipod|android|mobile/.test(ua);
-	// 	const isInApp = /(kakaotalk|line|instagram|naver|everytime|electron|daum|fb_iab|fb4a|fbios|fban|whatsapp|band|zumapp|aliapp|whale|trill|snapchat|samsungbrowser)/.test(ua);
-	// 	const isAlreadyOnM = location.host.startsWith('m.');
-
-	// 	if (isMobile && !isInApp && !isAlreadyOnM) {
-	// 		location.replace('https://m.nogglee.com' + location.pathname + location.search + location.hash);
-	// 		return;
-	// 	}
-
-	// 	try {
-	// 		const html = await (await fetch(`/m/landing.html`)).text();
-	// 		targetElement.innerHTML = html;
-	// 	} catch {
-	// 		targetElement.innerHTML = `<p style="color:red">landing 로딩 실패</p>`;
-	// 	}
-	// }
-	// await loadLandingPageWithMobileRedirect(document.getElementById('content'));
-
 	const ua = navigator.userAgent.toLowerCase();
 	const isMobile = /iphone|ipod|android|mobile|mobi/.test(ua);
 	const isAlreadyOnM = location.host.startsWith('m.');
@@ -43,6 +10,8 @@ export async function Start()
 		location.replace('https://m.nogglee.com' + location.pathname + location.search + location.hash);
 	}
 
+	await loadTemplate('header', 'header', document.getElementById('header'));
+	await loadTemplate('footer', 'footer', document.getElementById('footer'));
 	await loadPagePart('landing', document.getElementById('content'));
 	await renderSelectedPreviews(TEMPLATE_DATA, '#preview_template .grid', [1, 2, 3]);
 	await renderSelectedPreviews(PORTFOLIO_DATA, '#preview_portfolio .grid', [1, 2, 3, 4, 5, 6]);
