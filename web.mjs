@@ -13,7 +13,7 @@ export async function Start()
 	// In-app browser detection and notice
 	const isInApp = /(kakaotalk|line|instagram|naver|everytime|electron|daum|fb_iab|fb4a|fbios|fban|whatsapp|band|zumapp|aliapp|whale|trill|snapchat|samsungbrowser)/i.test(ua);
 	if (isInApp) {
-		const contentWrap = document.querySelector('.wrap');
+		const contentWrap = document.querySelector('#content');
 		if (contentWrap) {
 			contentWrap.insertAdjacentHTML('afterbegin', `
 					<div class="inapp_notice" style="background-color:#fff3cd;padding:1rem;border-radius:8px;margin-bottom:1rem;color:#856404;text-align:center;">
@@ -51,8 +51,6 @@ export async function Start()
 				alert('전송 중 오류가 발생했습니다.');
 			});
 	});
-
-	// Re-bind .cta_button click handlers after landing content is loaded
 
 	document.querySelectorAll('.cta_button').forEach((ThisButton) => {
 		ThisButton.onclick = () => {
