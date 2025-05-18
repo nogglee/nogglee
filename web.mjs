@@ -2,7 +2,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export async function Start() 
 {
-	// const ua = navigator.userAgent.toLowerCase();
+	const ua = navigator.userAgent.toLowerCase();
 	// const isMobile = /mobi|mobile|iphone|ipod|android|blackberry|iemobile|opera mini/.test(ua);
 	// const isAlreadyOnM = location.host.startsWith('m.');
 
