@@ -66,7 +66,7 @@ export async function Start()
 			targetElement.innerHTML = `<p style="color:red">landing 로딩 실패</p>`;
 		}
 	}
-
+	await loadLandingPageWithMobileRedirect(document.getElementById('content'));
 	// await loadPagePart('landing', document.getElementById('content'));
 	await renderSelectedPreviews(TEMPLATE_DATA, '#preview_template .grid', [1, 2, 3]);
 	await renderSelectedPreviews(PORTFOLIO_DATA, '#preview_portfolio .grid', [1, 2, 3, 4, 5, 6]);
