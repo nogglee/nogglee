@@ -34,7 +34,7 @@
 		return;
 	}
 
-	if (isMobile && !isAlreadyOnM) {
-		window.location.replace('https://m.nogglee.com' + window.location.pathname + window.location.search + window.location.hash);
+	if (!isInApp && isMobile && !isAlreadyOnM) {
+		window.location.replace('https://m.nogglee.com' + window.location.pathname + window.location.hash);
 	}
 })();
