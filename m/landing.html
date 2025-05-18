@@ -190,7 +190,7 @@
 <script>
 	const ua = navigator.userAgent.toLowerCase();
 	const isMobile = /iphone|ipad|ipod|android|mobile/.test(ua);
-	const isInApp = /(kakaotalk|line|instagram|naver|...)/.test(ua);
+	const isInApp = /(kakaotalk|line|instagram|naver|everytime|electron|daum|fb_iab|fb4a|fbios|fban|whatsapp|band|zumapp|aliapp|whale|trill|snapchat|samsungbrowser)/.test(ua);
 	const isAlreadyOnM = location.host.startsWith('m.');
 
 	if (isMobile && !isInApp && !isAlreadyOnM) {
