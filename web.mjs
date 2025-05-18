@@ -16,22 +16,13 @@ export async function Start()
 		const contentWrap = document.querySelector('#content');
 		if (contentWrap) {
 			contentWrap.insertAdjacentHTML('afterbegin', `
-					<div class="inapp_notice" style="background-color:#fff3cd;padding:1rem;border-radius:8px;margin-bottom:1rem;color:#856404;text-align:center;">
-						인앱 브라우저에서는 일부 기능이 제한될 수 있습니다.<br>
-						아래 버튼을 눌러 외부 브라우저에서 열어주세요.
-						<br><br>
-						<button id="openExternally" class="button_main" style="margin-top:0.5rem;">외부 브라우저에서 열기</button>
-					</div>
-				`);
-			document.querySelector('#openExternally')?.addEventListener('click', () => {
-					const link = document.createElement('a');
-					link.href = location.href;
-					link.target = '_blank';
-					link.rel = 'noopener noreferrer';
-					document.body.appendChild(link);
-					link.click();
-					document.body.removeChild(link);
-				});
+				<div class="inapp_notice" style="background-color:#fff3cd;padding:1rem;border-radius:8px;margin-bottom:1rem;color:#856404;text-align:center;">
+					인앱 브라우저에서는 일부 기능이 제한될 수 있습니다.<br>
+					아래 버튼을 눌러 외부 브라우저에서 열어주세요.
+					<br><br>
+					<a href="${location.href}" target="_blank" rel="noopener noreferrer" class="button_main" style="margin-top:0.5rem;display:inline-block;">외부 브라우저에서 열기</a>
+				</div>
+			`);
 		}
 	}
 
