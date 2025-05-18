@@ -46,14 +46,28 @@ export async function Start()
 		}
 	}
 
-	const isMobile = /iphone|ipad|ipod|android|mobile/.test(navigator.userAgent.toLowerCase());
-	const isAlreadyOnM = location.host.startsWith('m.');
+	async function loadLandingPageWithMobileRedirect(targetElement) {
+		const ua = navigator.userAgent.toLowerCase();
+		const isMobile = /iphone|ipad|ipod|android|mobile/.test(ua);
+		const isInApp = /(kakaotalk|line|instagram|naver|everytime|electron|daum|fb_iab|fb4a|fbios|fban|whatsapp|band|zumapp|aliapp|whale|trill|snapchat|samsungbrowser)/.test(ua);
+		const isAlreadyOnM = location.host.startsWith('m.');
 
-	if (isMobile && !isAlreadyOnM) {
-		location.replace('https://m.nogglee.com' + location.pathname + location.search + location.hash);
+		// ✅ 여기서 모바일이면 리디렉트
+		if (isMobile && !isInApp && !isAlreadyOnM) {
+			location.replace('https://m.nogglee.com' + location.pathname + location.search + location.hash);
+			return;
+		}
+
+		// ✅ landing.html 불러오기
+		try {
+			const html = await (await fetch(`/m/landing.html`)).text();
+			targetElement.innerHTML = html;
+		} catch {
+			targetElement.innerHTML = `<p style="color:red">landing 로딩 실패</p>`;
+		}
 	}
 
-	await loadPagePart('landing', document.getElementById('content'));
+	// await loadPagePart('landing', document.getElementById('content'));
 	await renderSelectedPreviews(TEMPLATE_DATA, '#preview_template .grid', [1, 2, 3]);
 	await renderSelectedPreviews(PORTFOLIO_DATA, '#preview_portfolio .grid', [1, 2, 3, 4, 5, 6]);
 
