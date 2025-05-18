@@ -11,18 +11,18 @@ export async function Start()
 		return;
 	}
 
-	const headerContainer = document.getElementById('header_section');
-	if (headerContainer && !headerContainer.querySelector('header-component')) {
+	const headerSection = document.getElementById('header_section');
+	if (headerSection && !headerSection.querySelector('header-component')) {
 		const headerEl = document.createElement('header-component');
-		headerContainer.appendChild(headerEl);
+		headerSection.appendChild(headerEl);
 	}
 
 	await loadPagePart('landing', document.getElementById('content'));
 
-	const footerContainer = document.getElementById('footer_section');
-	if (footerContainer && !footerContainer.querySelector('footer-component')) {
+	const footerSection = document.getElementById('footer_section');
+	if (footerSection && !footerSection.querySelector('footer-component')) {
 		const footerEl = document.createElement('footer-component');
-		footerContainer.appendChild(footerEl);
+		footerSection.appendChild(footerEl);
 	}
 
 	await renderSelectedPreviews(TEMPLATE_DATA, '#preview_template .grid', [1, 2, 3]);
@@ -31,18 +31,27 @@ export async function Start()
 	const form = document.getElementById('contact_form');
 	if (!form) return;
 
-	emailjs.init('YV7YzVSbiOXcul-mG'); // 📌 복사한 public key 사용
+	emailjs.init(window.EMAILJS.PUBLIC_KEY);
 
 	form.addEventListener('submit', function (e) {
 		e.preventDefault();
 
-		emailjs.sendForm('service_yjixszn', 'template_44zyocm', this)
+		emailjs.sendForm(
+			window.EMAILJS.SERVICE_ID,
+			window.EMAILJS.TEMPLATE_ID,
+			this
+		)
 			.then(() => {
-				alert('문의가 성공적으로 전송되었습니다!');
+				navigator.clipboard.writeText(`${form.message.value}`)
+				alert('문의해 주셔서 감사합니다.\n빠르게 검토 후 답변 드리겠습니다!');
 				form.reset();
 			}, (error) => {
 				console.error('전송 실패:', error);
-				alert('전송 중 오류가 발생했습니다.');
+				navigator.clipboard.writeText(`${form.message.value}`).then(() => {
+					alert('오류가 발생하여 문의내용을 클립보드에 복사했습니다.\n이메일로 직접 연락 주시면 감사하겠습니다.');
+				}).catch(err => {
+					console.error('클립보드 복사 실패:', err);
+				});
 			});
 	});
 
@@ -438,25 +447,5 @@ function renderSelectedPreviews(DATA_NAME, selector, ids) {
 			</div>
 		`;
 		grid.appendChild(element);
-	});
-}
-
-function sendEmail() {
-	const form = document.getElementById('contact_form');
-	if (!form) return;
-
-	emailjs.init('YV7YzVSbiOXcul-mG'); // 📌 복사한 public key 사용
-
-	form.addEventListener('submit', function (e) {
-		e.preventDefault();
-
-		emailjs.sendForm('service_yjixszn', 'template_44zyocm', this)
-			.then(() => {
-				alert('문의가 성공적으로 전송되었습니다!');
-				form.reset();
-			}, (error) => {
-				console.error('전송 실패:', error);
-				alert('전송 중 오류가 발생했습니다.');
-			});
 	});
 }
