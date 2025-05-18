@@ -2,6 +2,15 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export async function Start() 
 {
+	const ua = navigator.userAgent.toLowerCase();
+	const isMobile = /mobi|mobile|iphone|ipod|android|blackberry|iemobile|opera mini/.test(ua);
+	const isAlreadyOnM = location.host.startsWith('m.');
+
+	if (isMobile && !isAlreadyOnM) {
+		window.location.replace('https://m.nogglee.com' + window.location.pathname + window.location.search + window.location.hash);
+		return;
+	}
+
 	await loadPagePart('landing', document.getElementById('content'));
 	await renderSelectedPreviews(TEMPLATE_DATA, '#preview_template .grid', [1, 2, 3]);
 	await renderSelectedPreviews(PORTFOLIO_DATA, '#preview_portfolio .grid', [1, 2, 3, 4, 5, 6]);
