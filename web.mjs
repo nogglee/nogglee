@@ -13,7 +13,20 @@ export async function Start()
 	// In-app browser detection and notice
 	const isInApp = /(kakaotalk|line|instagram|naver|everytime|electron|daum|fb_iab|fb4a|fbios|fban|whatsapp|band|zumapp|aliapp|whale|trill|snapchat|samsungbrowser)/i.test(ua);
 	if (isInApp) {
-		await loadPagePart('test', document.getElementById('content'));
+		const contentWrap = document.getElementById('content');
+		if (contentWrap) {
+			contentWrap.innerHTML = `
+				<div style="padding: 2rem; font-family: sans-serif; text-align: center;">
+					<p style="font-size: 1.2rem;">인앱 브라우저에서는 일부 기능이 제한될 수 있습니다.<br>외부 브라우저(Safari 또는 Chrome)에서 열어주세요.</p>
+					<br>
+					<a href="${location.href}?from=inapp" target="_blank" rel="noopener noreferrer" class="button_main">
+						외부 브라우저에서 열기
+					</a>
+					<br><br>
+					<p style="font-size: 0.9rem; color: #888;">열리지 않으면 주소를 복사한 후 Safari에서 붙여넣기 해주세요.</p>
+				</div>
+			`;
+		}
 		return;
 	}
 
