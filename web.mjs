@@ -70,7 +70,7 @@ const TEMPLATE_DATA = [
 const PORTFOLIO_DATA = [
 	{
 		id: 1,
-		title: '시장 조사 기반의 IR 문서 작성',
+		title: 'IR 및 제안서 작성',
 		description: '시장과 경쟁사를 분석하고, 투자자 관점에서 매력적으로 보이도록 IR 문서를 기획·작성했습니다.',
 		type: 'plans',
 		link: 'https://www.notion.com/ko/templates/pm',
@@ -79,7 +79,7 @@ const PORTFOLIO_DATA = [
 	},
 	{
 		id: 2,
-		title: '자동화된 주간보고 시스템 구축',
+		title: '주간보고 시스템 구축',
 		description: '담당자가 날짜 계산 없이도 리포트를 작성할 수 있도록 자동화된 주차 계산 로직을 데이터베이스에 적용했습니다.',
 		type: 'tools',
 		link: '#',
@@ -97,7 +97,7 @@ const PORTFOLIO_DATA = [
 	},
 	{
 		id: 4,
-		title: '노션 / 구글시트 자동 연동',
+		title: '노션/구글시트 연동',
 		description: '보안 이슈로 인해 노션 사용이 어려운 고객사를 위해, 데이터를 자동 전송하는 구글시트 연동 시스템을 구축했습니다.',
 		type: 'tools',
 		link: '#',
@@ -106,7 +106,7 @@ const PORTFOLIO_DATA = [
 	},
 	{
 		id: 5,
-		title: '흐름 중심의 서비스 기획',
+		title: '사용자 중심 서비스 기획',
 		description: '스토리보드와 플로우차트를 기반으로, 사용자 흐름과 기능 정의를 명확히 정리했습니다.',
 		type: 'plans',
 		link: '#',
@@ -409,10 +409,12 @@ function renderSelectedPreviews(DATA_NAME, selector, ids) {
 		element.className = 'grid_item';
 		element.onclick = () => window.open(item.link, '_blank');
 		element.innerHTML = `
-			<img src="${item.image}" alt="${item.title}" />
-			<div class="grid_content">
-				<p class="description_sm"><strong>${item.title}</strong></p>
-				<p class="caption">${item.description}</p>
+			<div class="grid_item_inner">
+				<img src="${item.image}" alt="${item.title}" />
+				<div class="grid_content">
+					<p class="description_sm"><strong>${item.title}</strong></p>
+					<p class="caption">${item.description}</p>
+				</div>
 			</div>
 		`;
 		grid.appendChild(element);
