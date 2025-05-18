@@ -35,6 +35,7 @@ export async function Start()
 
 	var useragt = navigator.userAgent.toLowerCase();
 	var target_url = location.href;
+	const isInApp = /(kakaotalk|line|instagram|naver|everytime|electron|daum|fb_iab|fb4a|fbios|fban|whatsapp|band|zumapp|aliapp|whale|trill|snapchat|samsungbrowser)/i.test(useragt);
 
 	if (isInApp) {
 		if (/kakaotalk/i.test(useragt)) {
