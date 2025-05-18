@@ -2,15 +2,6 @@
 	const useragt = navigator.userAgent.toLowerCase();
 	const target_url = location.href;
 
-	// 1. 모바일 디바이스 감지 후 리다이렉트
-	const isMobile = /iphone|ipad|ipod|android|blackberry|iemobile|opera mini/i.test(useragt);
-	const isAlreadyOnMobileSubdomain = location.host.startsWith('m.');
-
-	if (isMobile && !isAlreadyOnMobileSubdomain) {
-		window.location.replace('https://m.nogglee.com' + window.location.pathname + window.location.search + window.location.hash);
-		return;
-	}
-
 	// 2. 카카오톡 외부 브라우저 열기
 	if (useragt.match(/kakaotalk/i)) {
 		location.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(target_url);
@@ -20,6 +11,15 @@
 	// 3. 라인 외부 브라우저 열기
 	if (useragt.match(/line/i)) {
 		location.href = target_url + (target_url.includes('?') ? '&' : '?') + 'openExternalBrowser=1';
+		return;
+	}
+
+	// 1. 모바일 디바이스 감지 후 리다이렉트
+	const isMobile = /iphone|ipad|ipod|android|blackberry|iemobile|opera mini/i.test(useragt);
+	const isAlreadyOnMobileSubdomain = location.host.startsWith('m.');
+
+	if (isMobile && !isAlreadyOnMobileSubdomain) {
+		window.location.replace('https://m.nogglee.com' + window.location.pathname + window.location.search + window.location.hash);
 		return;
 	}
 
