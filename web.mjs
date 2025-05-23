@@ -17,6 +17,12 @@ export async function Start()
 		await modalComponent.ready;
 	}
 
+	if (!document.querySelector('portfolio-modal-component')) {
+		const modalComponent = document.createElement('portfolio-modal-component');
+		document.body.appendChild(modalComponent);
+		await modalComponent.ready;
+	}
+
 	const headerSection = document.getElementById('header_section');
 	if (headerSection && !headerSection.querySelector('header-component')) {
 		const headerEl = document.createElement('header-component');
@@ -31,8 +37,8 @@ export async function Start()
 		footerSection.appendChild(footerEl);
 	}
 
-	await renderSelectedPreviews(TEMPLATE_DATA, '#preview_template .grid', [1, 2, 3]);
-	await renderSelectedPreviews(PORTFOLIO_DATA, '#preview_portfolio .grid', [1, 2, 3, 4, 5, 6]);
+	await renderSelectedPreviews(TEMPLATE_DATA, '#preview_template .grid', [1, 2, 3], 'template');
+	await renderSelectedPreviews(PORTFOLIO_DATA, '#preview_portfolio .grid', [1, 2, 3, 4, 5, 6], 'portfolio');
 
 	const form = document.getElementById('contact_form');
 	if (!form) return;
@@ -100,9 +106,10 @@ const TEMPLATE_DATA = [
 	{
 		id: 2,
 		title: 'PM을 위한 WBS',
-		description: '일정 관리에 최적화된 템플릿입니다. 담당자, 마감일, 진척도를 시각적으로 확인하며 실행 중심의 일정관리가 가능합니다.',
+		description: '담당자와 상태에 따른 시각적 구분부터 워킹데이 계산까지, 실무에 바로 적용 가능한 WBS입니다.',
+		content: '<strong>휴무일 자동 인식 및 컬러 반영</strong><br><ul><li>Google Apps Script를 활용해 주말 및 지정된 휴일을 자동 인식합니다.</li><li>타임라인 상에 휴무일이 시각적으로 구분되도록 설정했습니다.</li></ul><br><strong>시작일 / 종료일 기반 워킹데이 자동 계산</strong><br><ul><li>휴무일을 제외한 작업 기간을 자동 계산합니다.</li></ul><br><strong>실시간 타임라인 생성</strong><br><ul><li>각 작업별 일정이 오른쪽 타임라인에 실시간으로 반영됩니다.</li><li>시각자료를 통해 누구나 한눈에 프로젝트 전체 흐름을 파악할 수 있습니다.</li></ul><br><strong>상태값에 따라 색상 자동 변경</strong><br><ul><li>진행중 / 대기 / 완료 등의 상태에 따라 각 셀의 배경색이 자동으로 변경됩니다.</li></ul><br><strong>업무 뎁스(Level)에 따른 배경색 차등 적용</strong><br><ul><li>상위 Task와 하위 Task가 명확히 구분되도록 배경색을 차등 적용해 구조적 이해를 돕습니다.</li></ul>',
 		type: 'sheets',
-		link: '',
+		link: 'https://docs.google.com/spreadsheets/d/1ceGJy4js9K6_IFYVcwGDFlxyX54nE7afUDcxcG7fneg/edit?usp=sharing',
 		video: '',
 		image: '/m/a/t/2.svg'
 	},
@@ -469,6 +476,60 @@ class PortfolioCardComponent extends HTMLElement {
 }
 customElements.define('portfolio-card-component', PortfolioCardComponent);
 
+class PortfolioModalComponent extends HTMLElement {
+	constructor() {
+		super();
+		this.ready = this.init();
+	}
+
+	async init() {
+		const success = await loadTemplate('portfoliomodal', 'portfolio-modal-component', this);
+		if (!success) return;
+		this.modal = this.querySelector('#portfolio_modal');
+		this.modal.querySelector('.modal_close').addEventListener('click', () => {
+			this.modal.classList.remove('show');
+			document.body.style.overflow = '';
+		});
+		window.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') {
+				this.modal?.classList.remove('show');
+				document.body.style.overflow = '';
+			}
+		});
+		this.modal.addEventListener('click', (e) => {
+			if (e.target === this.modal) {
+				this.modal.classList.remove('show');
+				document.body.style.overflow = '';
+			}
+		});
+	}
+	showModal(item) {
+		const modal = this.modal;
+		modal.querySelector('#modal_title').textContent = item.title;
+		modal.querySelector('#modal_description').innerHTML = item.description;
+		modal.querySelector('#modal_content').innerHTML = item.content ?? '';
+
+		const iframe = modal.querySelector('#modal_video');
+		const img = modal.querySelector('#modal_image');
+
+		if (item.video) {
+			iframe.src = item.video;
+			iframe.style.display = 'block';
+		}
+		else {
+			iframe.src = '';
+			iframe.style.display = 'none';
+		}
+
+		img.src = item.image;
+		img.style.display = item.video ? 'none' : 'block';
+
+		modal.classList.add('show');
+		document.body.style.overflow = 'hidden';
+	}
+}
+customElements.define('portfolio-modal-component', PortfolioModalComponent);
+
 // functions
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 async function loadPagePart(pagePartName, targetElement, addHistory = true) {
@@ -520,7 +581,7 @@ async function loadTemplate(pagePartName, templateId, targetElement) {
 	}
 }
 
-function renderSelectedPreviews(DATA_NAME, selector, ids) {
+function renderSelectedPreviews(DATA_NAME, selector, ids, type = 'template') {
 	const grid = document.querySelector(selector);
 	if (!grid) return;
 	grid.innerHTML = '';
@@ -530,7 +591,7 @@ function renderSelectedPreviews(DATA_NAME, selector, ids) {
 		const element = document.createElement('div');
 		element.className = 'grid_item';
 		element.onclick = async () => {
-			const modalComponent = document.querySelector('template-modal-component');
+			const modalComponent = document.querySelector(`${type}-modal-component`);
 			if (!modalComponent) return;
 			await modalComponent.ready;
 			modalComponent.showModal(item);
