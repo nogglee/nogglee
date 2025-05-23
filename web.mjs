@@ -11,6 +11,12 @@ export async function Start()
 		return;
 	}
 
+	if (!document.querySelector('template-modal-component')) {
+		const modalComponent = document.createElement('template-modal-component');
+		document.body.appendChild(modalComponent);
+		await modalComponent.ready;
+	}
+
 	const headerSection = document.getElementById('header_section');
 	if (headerSection && !headerSection.querySelector('header-component')) {
 		const headerEl = document.createElement('header-component');
@@ -76,8 +82,6 @@ export async function Start()
 			document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
 		};
 	});
-
-
 }
 
 // data
@@ -86,20 +90,21 @@ const TEMPLATE_DATA = [
 	{
 		id: 1,
 		title: 'PM을 위한 프로젝트 관리',
-		description: '업무 분배에 최적화된 템플릿입니다. 업무 우선순위, 마감일, 진행 현황까지 한눈에 파악할 수 있습니다.',
+		description: '업무 분배에 최적화된 템플릿입니다.<br>업무 우선순위, 마감일, 진행 현황까지 한눈에 파악할 수 있습니다.',
+		content: '<img src="/m/a/t/1-1.png"><strong>업무 영역 뷰</strong><br><ul><li>기획, 개발환경설정, 마케팅, 경영지원 등 업무 영역별로 나뉜 전체 Task를 한눈에 조망할 수 있는 구조입니다.</li><li>Task 우선순위, 상태, 담당자, 일정, 진행률까지 함께 관리됩니다.</li></ul><img src="/m/a/t/1-2.png"><strong>기능 유형 뷰</strong><br><ul><li>기능별 단위(로그인, 게시판, 마이페이지 등)로 Task를 나누어 제품 중심의 개발 흐름을 정리할 수 있는 뷰입니다.</li><li>하나의 기능이 여러 업무 영역에 걸쳐 있을 경우 특히 유용합니다.</li></ul><img src="/m/a/t/1-3.png"><strong>진행현황 뷰</strong><br><ul><li>칸반보드 형식으로 진행현황별 Task를 조회할 수 있습니다.</li></ul><img src="/m/a/t/1-4.png"><strong>타임라인 뷰</strong><br><ul><li>간트차트 형식으로 프로젝트 일정을 시각화할 수 있습니다.</li></ul><br><strong>이런 분께 추천합니다.</strong><br><ul><li>협업 시스템 설계를 처음하는 팀 리더</li><li>기능 단위로 프로젝트를 파악하고 싶은 기획자/PM</li></ul>',
 		type: 'notion',
 		link: 'https://www.notion.com/ko/templates/pm',
-		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0mm',
-		image: '/m/a/t/t_01.svg'
+		video: '',
+		image: '/m/a/t/1.svg'
 	},
 	{
 		id: 2,
 		title: 'PM을 위한 WBS',
 		description: '일정 관리에 최적화된 템플릿입니다. 담당자, 마감일, 진척도를 시각적으로 확인하며 실행 중심의 일정관리가 가능합니다.',
 		type: 'sheets',
-		link: 'https://docs.google.com/spreadsheets/d/1ceGJy4js9K6_IFYVcwGDFlxyX54nE7afUDcxcG7fneg/edit?usp=sharing',
-		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/t/t_02.svg'
+		link: '',
+		video: '',
+		image: '/m/a/t/2.svg'
 	},
 	{
 		id: 3,
@@ -107,8 +112,8 @@ const TEMPLATE_DATA = [
 		description: '아이디어를 시각적으로 정리할 수 있는 스토리보드 템플릿입니다. 기획안의 핵심 흐름을 팀과 공유할 수 있습니다.',
 		type: 'figma',
 		link: 'https://www.figma.com/community/file/1500835421501275212/storybaord',
-		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/t/t_03.svg'
+		video: '',
+		image: '/m/a/t/3.svg'
 	}
 ];
 
@@ -117,10 +122,11 @@ const PORTFOLIO_DATA = [
 		id: 1,
 		title: 'IR 및 제안서 작성',
 		description: '시장과 경쟁사를 분석하고, 투자자 관점에서 매력적으로 보이도록 IR 문서를 기획·작성했습니다.',
+		content: '첫 줄<br>두 번째 줄<br>세 번째 줄',
 		type: 'plans',
 		link: 'https://www.notion.com/ko/templates/pm',
-		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0mm',
-		image: '/m/a/p/p_01.svg'
+		video: '',
+		image: '/m/a/p/1.svg'
 	},
 	{
 		id: 2,
@@ -128,8 +134,8 @@ const PORTFOLIO_DATA = [
 		description: '담당자가 날짜 계산 없이도 리포트를 작성할 수 있도록 자동화된 주차 계산 로직을 데이터베이스에 적용했습니다.',
 		type: 'tools',
 		link: '#',
-		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/p/p_02.svg'
+		video: '',
+		image: '/m/a/p/2.svg'
 	},
 	{
 		id: 3,
@@ -137,8 +143,8 @@ const PORTFOLIO_DATA = [
 		description: '상품, 재고, 고객, 매출까지 통합 관리할 수 있는 POS 프로그램을 기획하고 개발했습니다.',
 		type: 'apps',
 		link: '#',
-		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/p/p_03.svg'
+		video: '',
+		image: '/m/a/p/3.svg'
 	},
 	{
 		id: 4,
@@ -146,8 +152,8 @@ const PORTFOLIO_DATA = [
 		description: '보안 이슈로 인해 노션 사용이 어려운 고객사를 위해, 데이터를 자동 전송하는 구글시트 연동 시스템을 구축했습니다.',
 		type: 'tools',
 		link: '#',
-		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/p/p_04.svg'
+		video: '',
+		image: '/m/a/p/4.svg'
 	},
 	{
 		id: 5,
@@ -155,8 +161,8 @@ const PORTFOLIO_DATA = [
 		description: '스토리보드와 플로우차트를 기반으로, 사용자 흐름과 기능 정의를 명확히 정리했습니다.',
 		type: 'plans',
 		link: '#',
-		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/p/p_05.svg'
+		video: '',
+		image: '/m/a/p/5.svg'
 	},
 	{
 		id: 6,
@@ -164,8 +170,8 @@ const PORTFOLIO_DATA = [
 		description: '컴포넌트 중심의 디자인 시스템을 설계하여 개발과 협업 효율을 높였습니다.',
 		type: 'plans',
 		link: '#',
-		video: 'https://www.youtube.com/embed/vmL-XgxwQZU?si=gcctn4yt752_3s0m',
-		image: '/m/a/p/p_06.svg'
+		video: '',
+		image: '/m/a/p/6.svg'
 	}
 ];
 
@@ -352,6 +358,62 @@ class TemplateCardComponent extends HTMLElement
 }
 customElements.define('template-card-component', TemplateCardComponent);
 
+class TemplateModalComponent extends HTMLElement {
+	constructor() {
+		super();
+		this.ready = this.init();
+	}
+
+	async init() {
+		const success = await loadTemplate('templatemodal', 'template-modal-component', this);
+		if (!success) return;
+		this.modal = this.querySelector('#template_modal');
+		this.modal.querySelector('.modal_close').addEventListener('click', () => {
+			this.modal.classList.remove('show');
+			document.body.style.overflow = '';
+		});
+		window.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') {
+				this.modal?.classList.remove('show');
+				document.body.style.overflow = '';
+			}
+		});
+		this.modal.addEventListener('click', (e) => {
+			if (e.target === this.modal) {
+				this.modal.classList.remove('show');
+				document.body.style.overflow = '';
+			}
+		});
+	}
+
+	showModal(item) {
+		const modal = this.modal;
+		modal.querySelector('#modal_title').textContent = item.title;
+		modal.querySelector('#modal_description').innerHTML = item.description;
+		modal.querySelector('#modal_link').href = item.link;
+		modal.querySelector('#modal_content').innerHTML = item.content ?? '';
+
+		const iframe = modal.querySelector('#modal_video');
+		const img = modal.querySelector('#modal_image');
+
+		if (item.video) {
+			iframe.src = item.video;
+			iframe.style.display = 'block';
+		}
+		else {
+			iframe.src = '';
+			iframe.style.display = 'none';
+		}
+
+		img.src = item.image;
+		img.style.display = item.video ? 'none' : 'block';
+
+		modal.classList.add('show');
+		document.body.style.overflow = 'hidden';
+	}
+}
+customElements.define('template-modal-component', TemplateModalComponent);
+
 class PortfolioCardComponent extends HTMLElement {
 	constructor() {
 		super();
@@ -467,7 +529,12 @@ function renderSelectedPreviews(DATA_NAME, selector, ids) {
 		if (!item) return;
 		const element = document.createElement('div');
 		element.className = 'grid_item';
-		element.onclick = () => window.open(item.link, '_blank');
+		element.onclick = async () => {
+			const modalComponent = document.querySelector('template-modal-component');
+			if (!modalComponent) return;
+			await modalComponent.ready;
+			modalComponent.showModal(item);
+		};
 		element.innerHTML = `
 			<div class="grid_item_inner">
 				<img src="${item.image}" alt="${item.title}" />
