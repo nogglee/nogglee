@@ -332,10 +332,11 @@ class CardComponent extends HTMLElement {
 			card.querySelector('.description_sm strong').textContent = item.title;
 			card.querySelector('.caption').textContent = item.description;
 			card.dataset.type = item.type;
+			const originType = this.getAttribute('data-type');
 			card.onclick = async () => {
 				const modalComponent = document.querySelector('modal-component');
 				await modalComponent.ready;
-				modalComponent.showModal(item);
+				modalComponent.showModal(item, originType);
 			};
 			this.listContainer.appendChild(card);
 		});
@@ -388,16 +389,16 @@ class ModalComponent extends HTMLElement {
 		});
 	}
 
-	showModal(item) {
+	showModal(item, originType) {
 		const modal = this.modal;
 		modal.querySelector('#modal_title').textContent = item.title;
 		modal.querySelector('#modal_description').innerHTML = item.description;
 		const link = modal.querySelector('#modal_link');
-		if (item.link && item.type === 'template') {
-			link.style.display = 'inline-block';
-			link.setAttribute('href', item.link);
-		} else {
+		if (originType === 'portfolio') {
 			link.style.display = 'none';
+		} else {
+			link.style.display = 'block';
+			link.setAttribute('href', item.link || '#');
 		}
 		modal.querySelector('#modal_content').innerHTML = item.content ?? '';
 
@@ -481,11 +482,12 @@ function renderSelectedPreviews(DATA_NAME, selector, ids, type) {
 		if (!item) return;
 		const element = document.createElement('div');
 		element.className = 'grid_item';
+		element.dataset.type = item.type;
 		element.onclick = async () => {
 			const modalComponent = document.querySelector(`modal-component`);
 			if (!modalComponent) return;
 			await modalComponent.ready;
-			modalComponent.showModal(item);
+			modalComponent.showModal(item, type);
 		};
 		element.innerHTML = `
 			<div class="grid_item_inner">
