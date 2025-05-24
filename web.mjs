@@ -88,6 +88,34 @@ export async function Start()
 			document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
 		};
 	});
+
+	document.querySelectorAll('.grid_item').forEach((ThisGridItem) => {
+		const category = ThisGridItem.dataset.name;
+		if (category) {
+			ThisGridItem.onclick = async () => {
+				await loadPagePart('portfoliolist', document.getElementById('content'));
+
+				const waitForComponent = async () => {
+					const component = document.querySelector('portfolio-card-component');
+					if (component && typeof component.filterCards === 'function') {
+						await component.ready;
+						component.filterCards(category);
+
+						document.querySelectorAll('#filter_menu button').forEach(btn => {
+							if (btn.dataset.filter === category) {
+								btn.classList.add('active');
+							} else {
+								btn.classList.remove('active');
+							}
+						});
+					} else {
+						setTimeout(waitForComponent, 10);
+					}
+				};
+				waitForComponent();
+			};
+		}
+	});
 }
 
 // data
@@ -107,7 +135,7 @@ const TEMPLATE_DATA = [
 		id: 2,
 		title: 'PM을 위한 WBS',
 		description: '담당자와 상태에 따른 시각적 구분부터 워킹데이 계산까지, 실무에 바로 적용 가능한 WBS입니다.',
-		content: '<strong>휴무일 자동 인식 및 컬러 반영</strong><br><ul><li>Google Apps Script를 활용해 주말 및 지정된 휴일을 자동 인식합니다.</li><li>타임라인 상에 휴무일이 시각적으로 구분되도록 설정했습니다.</li></ul><br><strong>시작일 / 종료일 기반 워킹데이 자동 계산</strong><br><ul><li>휴무일을 제외한 작업 기간을 자동 계산합니다.</li></ul><br><strong>실시간 타임라인 생성</strong><br><ul><li>각 작업별 일정이 오른쪽 타임라인에 실시간으로 반영됩니다.</li><li>시각자료를 통해 누구나 한눈에 프로젝트 전체 흐름을 파악할 수 있습니다.</li></ul><br><strong>상태값에 따라 색상 자동 변경</strong><br><ul><li>진행중 / 대기 / 완료 등의 상태에 따라 각 셀의 배경색이 자동으로 변경됩니다.</li></ul><br><strong>업무 뎁스(Level)에 따른 배경색 차등 적용</strong><br><ul><li>상위 Task와 하위 Task가 명확히 구분되도록 배경색을 차등 적용해 구조적 이해를 돕습니다.</li></ul>',
+		content: '<img src="/m/a/t/2-1.png"><strong>업무 뎁스(Level)에 따른 배경색 차등 적용</strong><br><ul><li>상위 Task와 하위 Task가 명확히 구분되도록 배경색을 차등 적용해 구조적 이해를 돕습니다.</li></ul><br><strong>휴무일 자동 인식 및 컬러 반영</strong><br><ul><li>Google Apps Script를 활용해 주말 및 지정된 휴일을 자동 인식합니다.</li><li>타임라인 상에 휴무일이 시각적으로 구분되도록 설정했습니다.</li></ul><br><strong>시작일 / 종료일 기반 워킹데이 자동 계산</strong><br><ul><li>휴무일을 제외한 작업 기간을 자동 계산합니다.</li></ul><br><img src="/m/a/t/2-2.png"><strong>실시간 타임라인 생성</strong><br><ul><li>각 작업별 일정이 오른쪽 타임라인에 실시간으로 반영됩니다.</li><li>시각자료를 통해 누구나 한눈에 프로젝트 전체 흐름을 파악할 수 있습니다.</li></ul><br><strong>상태값에 따라 색상 자동 변경</strong><br><ul><li>진행중 / 대기 / 완료 등의 상태에 따라 각 셀의 배경색이 자동으로 변경됩니다.</li></ul><br>',
 		type: 'sheets',
 		link: 'https://docs.google.com/spreadsheets/d/1ceGJy4js9K6_IFYVcwGDFlxyX54nE7afUDcxcG7fneg/edit?usp=sharing',
 		video: '',
@@ -115,12 +143,23 @@ const TEMPLATE_DATA = [
 	},
 	{
 		id: 3,
-		title: '스토리보드',
+		title: '기획자를 위한 스토리보드',
 		description: '아이디어를 시각적으로 정리할 수 있는 스토리보드 템플릿입니다. 기획안의 핵심 흐름을 팀과 공유할 수 있습니다.',
+		content: '<img src="/m/a/t/3-1.png"><strong>화면 단위 중심의 구조 설계</strong><br><ul><li>각 페이지(SCREEN ID/Path)를 기준으로 기능 흐름을 정의하고,<br>어떤 행동(버튼 클릭 등)이 어떤 화면 이동이나 액션을 유도하는지<br>시각적으로 정리할 수 있습니다.</li></ul><br><strong>Control / Information 별도 정리 구조</strong><br><ul><li>실제 개발이나 디자이너 전달 시 필요한 주요 제어 요소(button, dropdown 등)와<br>그에 대한 Display Condition을 별도로 정의해 커뮤니케이션 오류를 줄여줍니다.</li></ul><br><strong>설명과 인터랙션이 분리된 깔끔한 시각 구성</strong><br><ul><li>흐름을 따라가며 읽듯이 확인할 수 있어,<br>디자이너/개발자/클라이언트 간의 이해 격차를 줄여줍니다.</li></ul>',
 		type: 'figma',
 		link: 'https://www.figma.com/community/file/1500835421501275212/storybaord',
 		video: '',
-		image: '/m/a/t/3.svg'
+		image: '/m/a/t/3.svg',
+	},
+	{
+		id: 4,
+		title: '기획자를 위한 스토리보드',
+		description: '아이디어를 시각적으로 정리할 수 있는 스토리보드 템플릿입니다. 기획안의 핵심 흐름을 팀과 공유할 수 있습니다.',
+		content: '<img src="/m/a/t/3-1.png"><strong>화면 단위 중심의 구조 설계</strong><br><ul><li>각 페이지(SCREEN ID/Path)를 기준으로 기능 흐름을 정의하고,<br>어떤 행동(버튼 클릭 등)이 어떤 화면 이동이나 액션을 유도하는지<br>시각적으로 정리할 수 있습니다.</li></ul><br><strong>Control / Information 별도 정리 구조</strong><br><ul><li>실제 개발이나 디자이너 전달 시 필요한 주요 제어 요소(button, dropdown 등)와<br>그에 대한 Display Condition을 별도로 정의해 커뮤니케이션 오류를 줄여줍니다.</li></ul><br><strong>설명과 인터랙션이 분리된 깔끔한 시각 구성</strong><br><ul><li>흐름을 따라가며 읽듯이 확인할 수 있어,<br>디자이너/개발자/클라이언트 간의 이해 격차를 줄여줍니다.</li></ul>',
+		type: 'figma',
+		link: 'https://www.figma.com/community/file/1500835421501275212/storybaord',
+		video: '',
+		image: '/m/a/t/3.svg',
 	}
 ];
 
@@ -322,16 +361,17 @@ class TemplateCardComponent extends HTMLElement
 		if (!success) return;
 
 		this.listContainer = this.parentElement;
-		const cardTemplate = this.listContainer.querySelector('.template_item');
+		const cardTemplate = this.listContainer.querySelector('.grid_item');
 		this.listContainer.innerHTML = ''
 		if (!cardTemplate) return;
 
 		TEMPLATE_DATA.forEach(item => {
 			const card = cardTemplate.cloneNode(true);
-			card.querySelector('.template_title').textContent = item.title;
-			card.querySelector('.template_desc').textContent = item.description;
-			card.querySelector('.template_link').href = item.link;
-			card.querySelector('iframe').src = item.video;
+			card.querySelector('.grid_item_image').src = item.image;
+			const strong = document.createElement('strong');
+			strong.textContent = item.title;
+			card.querySelector('.description_sm').append(strong);
+			card.querySelector('.caption').textContent = item.description;
 			card.dataset.type = item.type;
 			this.listContainer.appendChild(card);
 		});
@@ -346,7 +386,7 @@ class TemplateCardComponent extends HTMLElement
 	}
 	filterCards(filter) 
 	{
-		const cards = this.listContainer.querySelectorAll('.template_item');
+		const cards = this.listContainer.querySelectorAll('.grid_item');
 		cards.forEach(card => {
 			const type = card.dataset.type;
 			card.style.display = (filter === 'all' || type === filter) ? 'block' : 'none';
@@ -432,15 +472,17 @@ class PortfolioCardComponent extends HTMLElement {
 		if (!success) return;
 
 		this.listContainer = this.parentElement;
-		const cardTemplate = this.listContainer.querySelector('.portfolio_item');
+		const cardTemplate = this.listContainer.querySelector('.grid_item');
 		this.listContainer.innerHTML = ''
 		if (!cardTemplate) return;
 
 		PORTFOLIO_DATA.forEach(item => {
 			const card = cardTemplate.cloneNode(true);
-			card.querySelector('.portfolio_title').textContent = item.title;
-			card.querySelector('.portfolio_desc').textContent = item.description;
-			card.querySelector('.portfolio_link').href = item.link;
+			card.querySelector('.grid_item_image').src = item.image;
+			const strong = document.createElement('strong');
+			strong.textContent = item.title;
+			card.querySelector('.description_sm').append(strong);
+			card.querySelector('.caption').textContent = item.description;
 			card.dataset.type = item.type;
 			this.listContainer.appendChild(card);
 		});
@@ -457,7 +499,7 @@ class PortfolioCardComponent extends HTMLElement {
 			console.warn('listContainer가 설정되지 않았습니다.');
 			return;
 		}
-		const cards = this.listContainer.querySelectorAll('.portfolio_item');
+		const cards = this.listContainer.querySelectorAll('.grid_item');
 		cards.forEach(card => {
 			const type = card.dataset.type;
 			card.style.display = (filter === 'all' || type === filter) ? 'block' : 'none';

@@ -20,64 +20,7 @@
 		margin: 3rem 0 0 0;
 	}
 	
-	.grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(320px, auto));
-		column-gap: 1rem;
-		row-gap: 1rem;
-		width: 100%;
-		justify-content: center;
-	}
 	
-	.grid_item {
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		text-align: left;
-		align-items: center;
-		cursor: pointer;
-	}
-
-	.grid_item_inner {
-		padding: 1rem;
-		gap: 1rem;
-		transition: background-color 0.3s;
-		border-radius: 24px;
-		width: 100%;
-		min-width: 320px;
-		max-width: 360px;
-	}
-
-	.grid_item:hover .grid_item_inner {
-		background-color: #161512;
-	}
-
-	.grid_item:hover {
-		border-radius: 24px;
-	}
-
-	.grid_content {
-		margin-top: 1rem;
-		width: 100%;
-		text-align: left;
-	}
-
-	.grid img {
-		width: 100%;
-		border-radius: 20px;
-	}
-
-	.grid_item .description_sm,
-	.grid_item .caption {
-		max-width: 100%;
-		box-sizing: border-box;
-	}
-
-	lottie-player {
-		width: 100%;
-		height: 6rem;
-		margin-top: 4%;
-	}
 </style>
 
 <body>
@@ -106,7 +49,7 @@
 		<section id="how">
 			<h2 class="sub_title"><span class="highlight">노글리</span>는 이런 일을 합니다</h2>
 			<div class="grid">
-				<div class="grid_item">
+				<div class="grid_item" data-name="plans">
 					<div class="grid_item_inner">
 						<img src="/m/a/how_01.svg">
 						<div class="grid_content">
@@ -115,7 +58,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="grid_item">
+				<div class="grid_item" data-name="tools">
 					<div class="grid_item_inner">
 						<img src="/m/a/how_02.svg">
 						<div class="grid_content">
@@ -124,7 +67,7 @@
 						</div>
 						</div>
 				</div>
-				<div class="grid_item">
+				<div class="grid_item" data-name="apps">
 					<div class="grid_item_inner">
 						<img src="/m/a/how_03.svg">
 						<div class="grid_content">

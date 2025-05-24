@@ -1,28 +1,19 @@
 <style>
-	#template_filter_menu button {
-		transition: background-color 0.2s ease;
-		background-color: white;
-		border: none;
-		color: #000;
-		padding: 8px 16px;
-		border-radius: 8px;
-		cursor: pointer;
-	}
-
-	#template_filter_menu button.active {
-		background-color: #161512;
-		color: #FAFAFA;
-
+	.grid {
+		justify-content: flex-start;
 	}
 </style>
+
 <div class="wrap">
-	<div id="template_filter_menu">
-		<button data-filter="all">전체</button>
-		<button data-filter="notion">노션</button>
-		<button data-filter="sheets">구글시트</button>
-		<button data-filter="figma">피그마</button>
-	</div>
-	<div id="template_list">
-		<template-card-component></template-card-component>
+	<div class="grid_container">
+		<div class="filter_menu">
+			<button data-filter="all">All</button>
+			<button data-filter="notion">Notion</button>
+			<button data-filter="sheets">Google Sheets</button>
+			<button data-filter="figma">Figma</button>
+		</div>
+		<div class="grid">
+			<template-card-component></template-card-component>
+		</div>
 	</div>
 </div>
