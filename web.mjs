@@ -144,16 +144,6 @@ const TEMPLATE_DATA = [
 		link: 'https://www.figma.com/community/file/1500835421501275212/storybaord',
 		video: '',
 		image: '/m/a/t/3.svg',
-	},
-	{
-		id: 4,
-		title: '기획자를 위한 스토리보드',
-		description: '아이디어를 시각적으로 정리할 수 있는 스토리보드 템플릿입니다. 기획안의 핵심 흐름을 팀과 공유할 수 있습니다.',
-		content: '<img src="/m/a/t/3-1.png"><strong>화면 단위 중심의 구조 설계</strong><br><ul><li>각 페이지(SCREEN ID/Path)를 기준으로 기능 흐름을 정의하고,<br>어떤 행동(버튼 클릭 등)이 어떤 화면 이동이나 액션을 유도하는지<br>시각적으로 정리할 수 있습니다.</li></ul><br><strong>Control / Information 별도 정리 구조</strong><br><ul><li>실제 개발이나 디자이너 전달 시 필요한 주요 제어 요소(button, dropdown 등)와<br>그에 대한 Display Condition을 별도로 정의해 커뮤니케이션 오류를 줄여줍니다.</li></ul><br><strong>설명과 인터랙션이 분리된 깔끔한 시각 구성</strong><br><ul><li>흐름을 따라가며 읽듯이 확인할 수 있어,<br>디자이너/개발자/클라이언트 간의 이해 격차를 줄여줍니다.</li></ul>',
-		type: 'figma',
-		link: 'https://www.figma.com/community/file/1500835421501275212/storybaord',
-		video: '',
-		image: '/m/a/t/3.svg',
 	}
 ];
 
@@ -162,18 +152,19 @@ const PORTFOLIO_DATA = [
 		id: 1,
 		title: 'IR 및 제안서 작성',
 		description: '시장과 경쟁사를 분석하고, 투자자 관점에서 매력적으로 보이도록 IR 문서를 기획·작성했습니다.',
-		content: '첫 줄<br>두 번째 줄<br>세 번째 줄',
+		content: '<strong>프로젝트 개요</strong><br>다양한 산업군의 서비스에 대해,<br>투자자 유치 및 신사업 진행을 위한 IR 및 제안서를 직접 기획하고 작성했습니다.<br>아이템의 특성과 전달 대상에 맞춰, 정보의 흐름을 구성하고,<br>시장 분석과 인사이트 도출을 통해 핵심 가치가 잘 드러나도록 문서화했습니다.<br><br><strong>작성한 문서 유형</strong><br><ol><li>[ SaaS IR ] 협업툴<br><img src="/m/a/p/1-1.png"></li><li>[ 산업 특화 IR ] 반려동물 케어 산업 예약 솔루션<br><img src="/m/a/p/1-2.png"></li><li>[ AI/마케팅 IR ] AI 인플루언서 매칭 서비스<br><img src="/m/a/p/1-4.png"></li><li>[ 플랫폼 제안서 ] 지식 콘텐츠 판매 플랫폼<br><img src="/m/a/p/1-3.png"></li><li>[ 플랫폼 제안서 ] 커피챗 기반 커리어 매칭 플랫폼<br><img src="/m/a/p/1-5.png"></li></ol><br><strong>적용한 분석 기법</strong><br><ul><li>시장 분석 및 구조화<ul><li>TAM / SAM / SOM 분석</li><li>산업별 트렌드 및 성장성 도출</li><li>경쟁사 포지션 비교 / 4P 분석</li></ul></li><li>문서 기획 및 구성 설계<ul><li>슬라이드 톤앤매너 통일</li><li>핵심 가치 명확화 및 메시지 요약</li><li>인포그래픽, 구조도, 시각화 적용</li></ul></li><li>비즈니스 모델 설계 보완<ul><li>수익모델 제안, GTM 전략 초안 구성</li><li>MVP 범위 정리 및 실행 로드맵 제시</li></ul></li></ul>',
 		type: 'plans',
-		link: 'https://www.notion.com/ko/templates/pm',
+		link: '',
 		video: '',
 		image: '/m/a/p/1.svg'
 	},
 	{
 		id: 2,
 		title: '주간보고 시스템 구축',
-		description: '담당자가 날짜 계산 없이도 리포트를 작성할 수 있도록 자동화된 주차 계산 로직을 데이터베이스에 적용했습니다.',
+		description: '주차 계산 로직을 적용해 반복 업무를 줄이고,<br>누구나 동일한 기준으로 리포트를 작성할 수 있도록 정리했습니다.',
+		content: '<strong>프로젝트 개요</strong><br>여러 팀과 사업부에서 각기 다른 형식과 툴로 주간보고를 작성하고 있어<br>대표자 혹은 상위 관리자가 이를 일일이 확인하고 비교하기 어려운 문제를 해결하기 위해<br>표준화와 자동화가 적용된 주간보고 시스템을 구축했습니다.<br><br><strong>프로젝트 목적</strong><br>주간보고를 작성하는 업무를 줄이고, 누구나 동일한 기준으로 리포트를 작성할 수 있도록 정리했습니다.<br><br><img src="/m/a/p/2-2.png"><img src="/m/a/p/2-1.png"><strong>주요 기능</strong><br><ul><li>리포트 작성 템플릿 연동<br>데이터 베이스에 리포트 형식을 템플릿으로 저장하여,<br>누구나 동일한 형식으로 작성할 수 있습니다.</li><li>날짜 기반 주차 자동 산정<br>담당자가 날짜만 입력하면 해당 주차를 자동 계산하여 제목 및 필터에 반영합니다.</li><li>중앙 집중화된 보기 제공<br>관리자는 하나의 Notion 페이지에서 모든 팀의 리포트를 한눈에 확인할 수 있습니다.</li></ul><br><strong>기대 효과</strong><br><ul><li>리포트 작성 시간 단축</li><li>담당자 간 기준 일치로 보고 시점 혼선 제거</li><li>전체 업무 흐름 파악 용이</li></ul>',
 		type: 'tools',
-		link: '#',
+		link: '',
 		video: '',
 		image: '/m/a/p/2.svg'
 	},
@@ -191,25 +182,34 @@ const PORTFOLIO_DATA = [
 		title: '노션/구글시트 연동',
 		description: '보안 이슈로 인해 노션 사용이 어려운 고객사를 위해, 데이터를 자동 전송하는 구글시트 연동 시스템을 구축했습니다.',
 		type: 'tools',
-		link: '#',
+		link: '',
 		video: '',
 		image: '/m/a/p/4.svg'
 	},
 	{
 		id: 5,
+		title: '마케터를 위한 UTM 빌더',
+		description: '마케팅 캠페인을 위한 UTM 파라미터를 쉽게 생성할 수 있도록 UTM 빌더를 구축했습니다.',
+		type: 'apps',
+		link: 'https://urbuild.vercel.app',
+		video: '',
+		image: '/m/a/p/3.svg'
+	},
+	{
+		id: 6,
 		title: '사용자 중심 서비스 기획',
 		description: '스토리보드와 플로우차트를 기반으로, 사용자 흐름과 기능 정의를 명확히 정리했습니다.',
 		type: 'plans',
-		link: '#',
+		link: '',
 		video: '',
 		image: '/m/a/p/5.svg'
 	},
 	{
-		id: 6,
+		id: 7,
 		title: '디자인 시스템 구축',
 		description: '컴포넌트 중심의 디자인 시스템을 설계하여 개발과 협업 효율을 높였습니다.',
 		type: 'plans',
-		link: '#',
+		link: '',
 		video: '',
 		image: '/m/a/p/6.svg'
 	}
@@ -394,11 +394,19 @@ class ModalComponent extends HTMLElement {
 		modal.querySelector('#modal_title').textContent = item.title;
 		modal.querySelector('#modal_description').innerHTML = item.description;
 		const link = modal.querySelector('#modal_link');
-		if (originType === 'portfolio') {
-			link.style.display = 'none';
-		} else {
+		if (originType === 'template') {
 			link.style.display = 'block';
 			link.setAttribute('href', item.link || '#');
+			link.textContent = '템플릿 바로가기';
+		} else if (originType === 'portfolio') {
+			if (item.link) {
+				link.style.display = 'block';
+				link.setAttribute('href', item.link);
+				link.textContent = '서비스 바로가기';
+			} else {
+				link.style.display = 'none';
+				link.textContent = '';
+			}
 		}
 		modal.querySelector('#modal_content').innerHTML = item.content ?? '';
 

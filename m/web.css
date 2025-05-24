@@ -232,7 +232,7 @@ template-modal-component {
 	max-height: calc(90vh - 300px);
 }
 
-.template_link {
+#modal_link {
 	display: block;
 	margin: 2rem 0;
 	padding: 1rem;
