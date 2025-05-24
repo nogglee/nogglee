@@ -11,14 +11,8 @@ export async function Start()
 		return;
 	}
 
-	if (!document.querySelector('template-modal-component')) {
-		const modalComponent = document.createElement('template-modal-component');
-		document.body.appendChild(modalComponent);
-		await modalComponent.ready;
-	}
-
-	if (!document.querySelector('portfolio-modal-component')) {
-		const modalComponent = document.createElement('portfolio-modal-component');
+	if (!document.querySelector('modal-component')) {
+		const modalComponent = document.createElement('modal-component');
 		document.body.appendChild(modalComponent);
 		await modalComponent.ready;
 	}
@@ -89,14 +83,14 @@ export async function Start()
 		};
 	});
 
-	document.querySelectorAll('.grid_item').forEach((ThisGridItem) => {
+	document.querySelectorAll('.grid_item_how').forEach((ThisGridItem) => {
 		const category = ThisGridItem.dataset.name;
 		if (category) {
 			ThisGridItem.onclick = async () => {
 				await loadPagePart('portfoliolist', document.getElementById('content'));
 
 				const waitForComponent = async () => {
-					const component = document.querySelector('portfolio-card-component');
+					const component = document.querySelector('card-component');
 					if (component && typeof component.filterCards === 'function') {
 						await component.ready;
 						component.filterCards(category);
@@ -258,8 +252,8 @@ class HeaderComponent extends HTMLElement
 		this.querySelector('#logo').addEventListener('click', () => Start());
 
 		this.querySelectorAll('.nav_items').forEach(item => {
-			const mainMenu = item.dataset.name;
-			if (mainMenu === 'contact') {
+			const filterType = item.dataset.name;
+			if (filterType === 'contact') {
 				item.addEventListener('click', async () => {
 					await Start();
 					setTimeout(() => {
@@ -267,79 +261,46 @@ class HeaderComponent extends HTMLElement
 					}, 100);
 				});
 			}
-			else if (mainMenu) 
-			{
+			else if (filterType) {
 				item.addEventListener('click', async (e) => {
 					if (e.target.closest('.sub_nav_items')) return;
-					
-					await loadPagePart(`${mainMenu}`, document.getElementById('content'));
-					if (mainMenu === 'templatelist') 
-					{
-						const waitForComponent = async () => {
-							const component = document.querySelector('template-card-component');
-							if (component && typeof component.filterCards === 'function') 
-							{
-								await component.ready;
-								component.filterCards('all');
-							}
-							else
-							{
-								setTimeout(waitForComponent, 10);
-							}
-						};
-						waitForComponent();
-					}
-					else if (mainMenu === 'portfoliolist') {
-						const waitForComponent = async () => {
-							const component = document.querySelector('portfolio-card-component');
-							if (component && typeof component.filterCards === 'function') {
-								await component.ready;
-								component.filterCards('all');
-							}
-							else {
-								setTimeout(waitForComponent, 10);
-							}
-						};
-						waitForComponent();
-					}
+					const pageType = item.dataset.name;
+					console.log('[Header] 페이지 이동:', pageType);
+					await loadPagePart(pageType, document.getElementById('content'));
+
+					const waitForComponent = async () => {
+						const component = document.querySelector('card-component');
+						if (component && typeof component.filterCards === 'function') {
+							await component.ready;
+							component.filterCards('all'); // Always apply 'all' filter on top-level click
+						} else {
+							setTimeout(waitForComponent, 10);
+						}
+					};
+					waitForComponent();
 				});
-			} 
+			}
 		});
 
 		this.querySelectorAll('.sub_nav_items').forEach(item => {
 			const filterType = item.dataset.name;
-			if (filterType) 
-			{
-				item.addEventListener('click', async (e) => {
+			if (filterType) {
+				item.addEventListener('click', async () => {
 					const pageType = item.closest('.nav_items').dataset.name;
-					if (pageType === 'templatelist') {
-						await loadPagePart(pageType, document.getElementById('content'));
-						const waitForComponent = async () => {
-							const template_component = document.querySelector('template-card-component');
-							if (template_component && typeof template_component.filterCards === 'function' && filterType) {
-								await template_component.ready;
-								template_component.filterCards(filterType);
-							}
-							else {
-								setTimeout(waitForComponent, 10);
-							}
-						};
-						waitForComponent();
-					}
-					else if (pageType === 'portfoliolist') {
-						await loadPagePart(pageType, document.getElementById('content'));
-						const waitForComponent = async () => {
-							const portfolio_component = document.querySelector('portfolio-card-component');
-							if (portfolio_component && typeof portfolio_component.filterCards === 'function' && filterType) {
-								await portfolio_component.ready;
-								portfolio_component.filterCards(filterType);
-							}
-							else {
-								setTimeout(waitForComponent, 10);
-							}
-						};
-						waitForComponent();
-					}
+					if (!pageType) return;
+
+					await loadPagePart(pageType, document.getElementById('content'));
+
+					const waitForComponent = async () => {
+						const component = document.querySelector('card-component');
+						if (component && typeof component.filterCards === 'function') {
+							await component.ready;
+							component.filterCards(filterType);
+						} else {
+							setTimeout(waitForComponent, 10);
+						}
+					};
+					waitForComponent();
 				});
 			}
 		});
@@ -347,187 +308,68 @@ class HeaderComponent extends HTMLElement
 }
 customElements.define('header-component', HeaderComponent);
 
-class TemplateCardComponent extends HTMLElement
-{
-	constructor()
-	{
-		super();
-		this.ready = this.init();
-	}
-	
-	async init() 
-	{
-		const success = await loadTemplate('templateitem', 'template-card-component', this);
-		if (!success) return;
-
-		this.listContainer = this.parentElement;
-		const cardTemplate = this.listContainer.querySelector('.grid_item');
-		this.listContainer.innerHTML = ''
-		if (!cardTemplate) return;
-
-		TEMPLATE_DATA.forEach(item => {
-			const card = cardTemplate.cloneNode(true);
-			card.querySelector('.grid_item_image').src = item.image;
-			const strong = document.createElement('strong');
-			strong.textContent = item.title;
-			card.querySelector('.description_sm').append(strong);
-			card.querySelector('.caption').textContent = item.description;
-			card.dataset.type = item.type;
-			this.listContainer.appendChild(card);
-		});
-
-		this.ownerDocument.querySelectorAll('[data-filter]').forEach(btn => {
-			btn.addEventListener('click', () => {
-				const filter = btn.dataset.filter;
-				this.filterCards(filter);
-			});
-		});
-	
-	}
-	filterCards(filter) 
-	{
-		const cards = this.listContainer.querySelectorAll('.grid_item');
-		cards.forEach(card => {
-			const type = card.dataset.type;
-			card.style.display = (filter === 'all' || type === filter) ? 'block' : 'none';
-		});
-
-		this.ownerDocument.querySelectorAll('[data-filter]').forEach(btn => {
-			if (btn.dataset.filter === filter) {
-				console.log(btn.dataset.filter);;
-				console.log(filter);
-				btn.classList.add('active');
-			} else {
-				btn.classList.remove('active');
-			}
-		});
-	}
-}
-customElements.define('template-card-component', TemplateCardComponent);
-
-class TemplateModalComponent extends HTMLElement {
+class CardComponent extends HTMLElement {
 	constructor() {
 		super();
 		this.ready = this.init();
 	}
 
 	async init() {
-		const success = await loadTemplate('templatemodal', 'template-modal-component', this);
-		if (!success) return;
-		this.modal = this.querySelector('#template_modal');
-		this.modal.querySelector('.modal_close').addEventListener('click', () => {
-			this.modal.classList.remove('show');
-			document.body.style.overflow = '';
-		});
-		window.addEventListener('keydown', (e) => {
-			if (e.key === 'Escape') {
-				this.modal?.classList.remove('show');
-				document.body.style.overflow = '';
-			}
-		});
-		this.modal.addEventListener('click', (e) => {
-			if (e.target === this.modal) {
-				this.modal.classList.remove('show');
-				document.body.style.overflow = '';
-			}
-		});
-	}
-
-	showModal(item) {
-		const modal = this.modal;
-		modal.querySelector('#modal_title').textContent = item.title;
-		modal.querySelector('#modal_description').innerHTML = item.description;
-		modal.querySelector('#modal_link').href = item.link;
-		modal.querySelector('#modal_content').innerHTML = item.content ?? '';
-
-		const iframe = modal.querySelector('#modal_video');
-		const img = modal.querySelector('#modal_image');
-
-		if (item.video) {
-			iframe.src = item.video;
-			iframe.style.display = 'block';
-		}
-		else {
-			iframe.src = '';
-			iframe.style.display = 'none';
-		}
-
-		img.src = item.image;
-		img.style.display = item.video ? 'none' : 'block';
-
-		modal.classList.add('show');
-		document.body.style.overflow = 'hidden';
-	}
-}
-customElements.define('template-modal-component', TemplateModalComponent);
-
-class PortfolioCardComponent extends HTMLElement {
-	constructor() {
-		super();
-		this.ready = this.init();
-	}
-
-	async init() {
-		const success = await loadTemplate('portfolioitem', 'portfolio-card-component', this);
+		const success = await loadTemplate('carditem', 'card-component', this);
 		if (!success) return;
 
 		this.listContainer = this.parentElement;
 		const cardTemplate = this.listContainer.querySelector('.grid_item');
-		this.listContainer.innerHTML = ''
 		if (!cardTemplate) return;
 
-		PORTFOLIO_DATA.forEach(item => {
+		this.listContainer.innerHTML = '';
+
+		const DATA = this.getAttribute('data-type') === 'template' ? TEMPLATE_DATA : PORTFOLIO_DATA;
+
+		DATA.forEach(item => {
 			const card = cardTemplate.cloneNode(true);
 			card.querySelector('.grid_item_image').src = item.image;
-			const strong = document.createElement('strong');
-			strong.textContent = item.title;
-			card.querySelector('.description_sm').append(strong);
+			card.querySelector('.description_sm strong').textContent = item.title;
 			card.querySelector('.caption').textContent = item.description;
 			card.dataset.type = item.type;
+			card.onclick = async () => {
+				const modalComponent = document.querySelector('modal-component');
+				await modalComponent.ready;
+				modalComponent.showModal(item);
+			};
 			this.listContainer.appendChild(card);
 		});
 
 		this.ownerDocument.querySelectorAll('[data-filter]').forEach(btn => {
 			btn.addEventListener('click', () => {
-				const filter = btn.dataset.filter;
-				this.filterCards(filter);
+				this.filterCards(btn.dataset.filter);
 			});
 		});
 	}
+
 	filterCards(filter) {
-		if (!this.listContainer) {
-			console.warn('listContainer가 설정되지 않았습니다.');
-			return;
-		}
 		const cards = this.listContainer.querySelectorAll('.grid_item');
 		cards.forEach(card => {
 			const type = card.dataset.type;
 			card.style.display = (filter === 'all' || type === filter) ? 'block' : 'none';
 		});
-
 		this.ownerDocument.querySelectorAll('[data-filter]').forEach(btn => {
-			if (btn.dataset.filter === filter) {
-				console.log(btn.dataset.filter);
-				console.log(filter);
-				btn.classList.add('active');
-			} else {
-				btn.classList.remove('active');
-			}
+			btn.classList.toggle('active', btn.dataset.filter === filter);
 		});
 	}
 }
-customElements.define('portfolio-card-component', PortfolioCardComponent);
+customElements.define('card-component', CardComponent);
 
-class PortfolioModalComponent extends HTMLElement {
+class ModalComponent extends HTMLElement {
 	constructor() {
 		super();
 		this.ready = this.init();
 	}
 
 	async init() {
-		const success = await loadTemplate('portfoliomodal', 'portfolio-modal-component', this);
+		const success = await loadTemplate('modal', 'modal-component', this);
 		if (!success) return;
-		this.modal = this.querySelector('#portfolio_modal');
+		this.modal = this.querySelector('#modal');
 		this.modal.querySelector('.modal_close').addEventListener('click', () => {
 			this.modal.classList.remove('show');
 			document.body.style.overflow = '';
@@ -545,10 +387,18 @@ class PortfolioModalComponent extends HTMLElement {
 			}
 		});
 	}
+
 	showModal(item) {
 		const modal = this.modal;
 		modal.querySelector('#modal_title').textContent = item.title;
 		modal.querySelector('#modal_description').innerHTML = item.description;
+		const link = modal.querySelector('#modal_link');
+		if (item.link && item.type === 'template') {
+			link.style.display = 'inline-block';
+			link.setAttribute('href', item.link);
+		} else {
+			link.style.display = 'none';
+		}
 		modal.querySelector('#modal_content').innerHTML = item.content ?? '';
 
 		const iframe = modal.querySelector('#modal_video');
@@ -557,20 +407,19 @@ class PortfolioModalComponent extends HTMLElement {
 		if (item.video) {
 			iframe.src = item.video;
 			iframe.style.display = 'block';
-		}
-		else {
+			img.style.display = 'none';
+		} else {
 			iframe.src = '';
 			iframe.style.display = 'none';
+			img.src = item.image;
+			img.style.display = 'block';
 		}
-
-		img.src = item.image;
-		img.style.display = item.video ? 'none' : 'block';
 
 		modal.classList.add('show');
 		document.body.style.overflow = 'hidden';
 	}
 }
-customElements.define('portfolio-modal-component', PortfolioModalComponent);
+customElements.define('modal-component', ModalComponent);
 
 // functions
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -623,7 +472,7 @@ async function loadTemplate(pagePartName, templateId, targetElement) {
 	}
 }
 
-function renderSelectedPreviews(DATA_NAME, selector, ids, type = 'template') {
+function renderSelectedPreviews(DATA_NAME, selector, ids, type) {
 	const grid = document.querySelector(selector);
 	if (!grid) return;
 	grid.innerHTML = '';
@@ -633,7 +482,7 @@ function renderSelectedPreviews(DATA_NAME, selector, ids, type = 'template') {
 		const element = document.createElement('div');
 		element.className = 'grid_item';
 		element.onclick = async () => {
-			const modalComponent = document.querySelector(`${type}-modal-component`);
+			const modalComponent = document.querySelector(`modal-component`);
 			if (!modalComponent) return;
 			await modalComponent.ready;
 			modalComponent.showModal(item);
