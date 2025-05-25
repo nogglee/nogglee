@@ -127,12 +127,12 @@ const TEMPLATE_DATA = [
 	},
 	{
 		id: 2,
-		title: 'PM을 위한 WBS',
-		description: '담당자와 상태에 따른 시각적 구분부터 워킹데이 계산까지, 실무에 바로 적용 가능한 WBS입니다.',
-		content: '<img src="/m/a/t/2-1.png"><strong>업무 뎁스(Level)에 따른 배경색 차등 적용</strong><br><ul><li>상위 Task와 하위 Task가 명확히 구분되도록 배경색을 차등 적용해 구조적 이해를 돕습니다.</li></ul><br><strong>휴무일 자동 인식 및 컬러 반영</strong><br><ul><li>Google Apps Script를 활용해 주말 및 지정된 휴일을 자동 인식합니다.</li><li>타임라인 상에 휴무일이 시각적으로 구분되도록 설정했습니다.</li></ul><br><strong>시작일 / 종료일 기반 워킹데이 자동 계산</strong><br><ul><li>휴무일을 제외한 작업 기간을 자동 계산합니다.</li></ul><br><img src="/m/a/t/2-2.png"><strong>실시간 타임라인 생성</strong><br><ul><li>각 작업별 일정이 오른쪽 타임라인에 실시간으로 반영됩니다.</li><li>시각자료를 통해 누구나 한눈에 프로젝트 전체 흐름을 파악할 수 있습니다.</li></ul><br><strong>상태값에 따라 색상 자동 변경</strong><br><ul><li>진행중 / 대기 / 완료 등의 상태에 따라 각 셀의 배경색이 자동으로 변경됩니다.</li></ul><br>',
+		title: '1인 개발자를 위한 WBS',
+		description: '기능 단위 중심의 작업 구분과 실시간 일정 관리까지, 1인 개발자 실무에 바로 적용 가능한 WBS입니다.',
+		content: '<img src="/m/a/t/2-1.png"><strong>업무 뎁스(Level)에 따른 배경색 차등 적용</strong><br><ul><li>상위 Task와 하위 Task가 명확히 구분되도록 배경색을 차등 적용해 구조적 이해를 돕습니다.</li></ul><br><strong>기능 중심의 작업 구분</strong><br><ul><li>기능 단위로 태스크를 구분하여 실제 개발 흐름과 일치하도록 설계했습니다.</li></ul><br><strong>휴무일 자동 인식 및 컬러 반영</strong><br><ul><li>Google Apps Script를 활용해 주말 및 지정된 휴일을 자동 인식합니다.</li><li>타임라인 상에 휴무일이 시각적으로 구분되도록 설정했습니다.</li></ul><br><img src="/m/a/t/2-2.png"><strong>시작일 / 종료일 기반 워킹데이 자동 계산</strong><br><ul><li>휴무일을 제외한 작업 기간을 자동 계산합니다.</li></ul><br><strong>실시간 타임라인 생성</strong><br><ul><li>각 작업별 일정이 오른쪽 타임라인에 실시간으로 반영됩니다.</li><li>시각자료를 통해 누구나 한눈에 프로젝트 전체 흐름을 파악할 수 있습니다.</li></ul><br><strong>상태값에 따라 색상 자동 변경</strong><br><ul><li>진행중 / 대기 / 완료 등의 상태에 따라 각 셀의 배경색이 자동으로 변경됩니다.</li></ul><br>',
 		type: 'sheets',
-		link: 'https://docs.google.com/spreadsheets/d/1ceGJy4js9K6_IFYVcwGDFlxyX54nE7afUDcxcG7fneg/edit?usp=sharing',
-		video: '',
+		link: 'https://docs.google.com/spreadsheets/d/1icOF5ed8r1VjaVTXaTFqj_M3dyZjgkkPaZRFm0s5ALY/edit?usp=sharing',
+		video: 'https://youtu.be/8jMIBp5q6_I',
 		image: '/m/a/t/2.svg'
 	},
 	{
@@ -144,6 +144,16 @@ const TEMPLATE_DATA = [
 		link: 'https://www.figma.com/community/file/1500835421501275212/storybaord',
 		video: '',
 		image: '/m/a/t/3.svg',
+	},
+	{
+		id: 4,
+		title: 'PM을 위한 WBS',
+		description: '담당자와 상태에 따른 시각적 구분부터 워킹데이 계산까지, 실무에 바로 적용 가능한 WBS입니다.',
+		content: '<img src="/m/a/t/4-1.png"><strong>업무 뎁스(Level)에 따른 배경색 차등 적용</strong><br><ul><li>상위 Task와 하위 Task가 명확히 구분되도록 배경색을 차등 적용해 구조적 이해를 돕습니다.</li></ul><br><strong>휴무일 자동 인식 및 컬러 반영</strong><br><ul><li>Google Apps Script를 활용해 주말 및 지정된 휴일을 자동 인식합니다.</li><li>타임라인 상에 휴무일이 시각적으로 구분되도록 설정했습니다.</li></ul><br><strong>시작일 / 종료일 기반 워킹데이 자동 계산</strong><br><ul><li>휴무일을 제외한 작업 기간을 자동 계산합니다.</li></ul><br><img src="/m/a/t/4-2.png"><strong>실시간 타임라인 생성</strong><br><ul><li>각 작업별 일정이 오른쪽 타임라인에 실시간으로 반영됩니다.</li><li>시각자료를 통해 누구나 한눈에 프로젝트 전체 흐름을 파악할 수 있습니다.</li></ul><br><strong>상태값에 따라 색상 자동 변경</strong><br><ul><li>진행중 / 대기 / 완료 등의 상태에 따라 각 셀의 배경색이 자동으로 변경됩니다.</li></ul><br>',
+		type: 'sheets',
+		link: 'https://docs.google.com/spreadsheets/d/1ceGJy4js9K6_IFYVcwGDFlxyX54nE7afUDcxcG7fneg/edit?usp=sharing',
+		video: 'https://youtu.be/8jMIBp5q6_I',
+		image: '/m/a/t/4.svg'
 	}
 ];
 
