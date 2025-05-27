@@ -121,7 +121,7 @@ const TEMPLATE_DATA = [
 		description: '업무 분배에 최적화된 템플릿입니다.<br>업무 우선순위, 마감일, 진행 현황까지 한눈에 파악할 수 있습니다.',
 		content: '<img src="/m/a/t/1-1.png"><strong>업무 영역 뷰</strong><br><ul><li>기획, 개발환경설정, 마케팅, 경영지원 등 업무 영역별로 나뉜 전체 Task를 한눈에 조망할 수 있는 구조입니다.</li><li>Task 우선순위, 상태, 담당자, 일정, 진행률까지 함께 관리됩니다.</li></ul><img src="/m/a/t/1-2.png"><strong>기능 유형 뷰</strong><br><ul><li>기능별 단위(로그인, 게시판, 마이페이지 등)로 Task를 나누어 제품 중심의 개발 흐름을 정리할 수 있는 뷰입니다.</li><li>하나의 기능이 여러 업무 영역에 걸쳐 있을 경우 특히 유용합니다.</li></ul><img src="/m/a/t/1-3.png"><strong>진행현황 뷰</strong><br><ul><li>칸반보드 형식으로 진행현황별 Task를 조회할 수 있습니다.</li></ul><img src="/m/a/t/1-4.png"><strong>타임라인 뷰</strong><br><ul><li>간트차트 형식으로 프로젝트 일정을 시각화할 수 있습니다.</li></ul><br><strong>이런 분께 추천합니다.</strong><br><ul><li>협업 시스템 설계를 처음하는 팀 리더</li><li>기능 단위로 프로젝트를 파악하고 싶은 기획자/PM</li></ul>',
 		type: 'notion',
-		link: 'https://www.notion.com/ko/templates/pm',
+		link: 'https://www.youtube.com/embed/8jMIBp5q6_I?si=fz4v-QAY492oBt0n',
 		video: '',
 		image: '/m/a/t/1.svg'
 	},
@@ -132,7 +132,7 @@ const TEMPLATE_DATA = [
 		content: '<img src="/m/a/t/2-1.png"><strong>업무 뎁스(Level)에 따른 배경색 차등 적용</strong><br><ul><li>상위 Task와 하위 Task가 명확히 구분되도록 배경색을 차등 적용해 구조적 이해를 돕습니다.</li></ul><br><strong>기능 중심의 작업 구분</strong><br><ul><li>기능 단위로 태스크를 구분하여 실제 개발 흐름과 일치하도록 설계했습니다.</li></ul><br><strong>휴무일 자동 인식 및 컬러 반영</strong><br><ul><li>Google Apps Script를 활용해 주말 및 지정된 휴일을 자동 인식합니다.</li><li>타임라인 상에 휴무일이 시각적으로 구분되도록 설정했습니다.</li></ul><br><img src="/m/a/t/2-2.png"><strong>시작일 / 종료일 기반 워킹데이 자동 계산</strong><br><ul><li>휴무일을 제외한 작업 기간을 자동 계산합니다.</li></ul><br><strong>실시간 타임라인 생성</strong><br><ul><li>각 작업별 일정이 오른쪽 타임라인에 실시간으로 반영됩니다.</li><li>시각자료를 통해 누구나 한눈에 프로젝트 전체 흐름을 파악할 수 있습니다.</li></ul><br><strong>상태값에 따라 색상 자동 변경</strong><br><ul><li>진행중 / 대기 / 완료 등의 상태에 따라 각 셀의 배경색이 자동으로 변경됩니다.</li></ul><br>',
 		type: 'sheets',
 		link: 'https://docs.google.com/spreadsheets/d/1icOF5ed8r1VjaVTXaTFqj_M3dyZjgkkPaZRFm0s5ALY/edit?usp=sharing',
-		video: 'https://youtu.be/8jMIBp5q6_I',
+		video: 'https://www.youtube.com/embed/8jMIBp5q6_I?si=fz4v-QAY492oBt0n',
 		image: '/m/a/t/2.svg'
 	},
 	{
@@ -277,14 +277,13 @@ class HeaderComponent extends HTMLElement
 				item.addEventListener('click', async (e) => {
 					if (e.target.closest('.sub_nav_items')) return;
 					const pageType = item.dataset.name;
-					console.log('[Header] 페이지 이동:', pageType);
 					await loadPagePart(pageType, document.getElementById('content'));
 
 					const waitForComponent = async () => {
 						const component = document.querySelector('card-component');
 						if (component && typeof component.filterCards === 'function') {
 							await component.ready;
-							component.filterCards('all'); // Always apply 'all' filter on top-level click
+							component.filterCards('all');
 						} else {
 							setTimeout(waitForComponent, 10);
 						}
