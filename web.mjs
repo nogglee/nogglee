@@ -122,7 +122,7 @@ const TEMPLATE_DATA = [
 		content: '<img src="/m/a/t/1-1.png"><strong>업무 영역 뷰</strong><br><ul><li>기획, 개발환경설정, 마케팅, 경영지원 등 업무 영역별로 나뉜 전체 Task를 한눈에 조망할 수 있는 구조입니다.</li><li>Task 우선순위, 상태, 담당자, 일정, 진행률까지 함께 관리됩니다.</li></ul><img src="/m/a/t/1-2.png"><strong>기능 유형 뷰</strong><br><ul><li>기능별 단위(로그인, 게시판, 마이페이지 등)로 Task를 나누어 제품 중심의 개발 흐름을 정리할 수 있는 뷰입니다.</li><li>하나의 기능이 여러 업무 영역에 걸쳐 있을 경우 특히 유용합니다.</li></ul><img src="/m/a/t/1-3.png"><strong>진행현황 뷰</strong><br><ul><li>칸반보드 형식으로 진행현황별 Task를 조회할 수 있습니다.</li></ul><img src="/m/a/t/1-4.png"><strong>타임라인 뷰</strong><br><ul><li>간트차트 형식으로 프로젝트 일정을 시각화할 수 있습니다.</li></ul><br><strong>이런 분께 추천합니다.</strong><br><ul><li>협업 시스템 설계를 처음하는 팀 리더</li><li>기능 단위로 프로젝트를 파악하고 싶은 기획자/PM</li></ul>',
 		type: 'notion',
 		link: 'https://www.notion.com/ko/templates/pm',
-		video: '',
+		video: 'https://www.youtube.com/embed/zFiU3F1b85c?si=Ybakcogkv3KVbm3n',
 		image: '/m/a/t/1.svg'
 	},
 	{
