@@ -162,7 +162,7 @@ const TEMPLATE_DATA = [
 		content: '<i>본 템플릿은 <a href="https://linktr.ee/ohlocy?fbclid=PAQ0xDSwKxJKxleHRuA2FlbQIxMQABp5m1ieHPQU9IL1JYa8aTJ1rhVBFs-VFvrDUkSpzuHmrS4mpiI9dtG0O1ECx9_aem__pWY52q7Yx29pwlwkxTCPg"><b>오롯이 디자인</b></a>과 함께 제작했습니다.</i><br><br><strong>일과 삶, 둘 다 놓치지 않는 위클리 플래너</strong><br>프리랜서 디자이너 로씨의 니즈에서 시작된 이 템플릿은<br>업무와 개인 일정을 한 번에 정리하고 싶은 분들을 위한 맞춤 도구입니다.<br><br><img src="/m/a/t/5-1.png"><strong>장기 목표 메모장</strong><br><ul><li>연간/분기 목표를 자유롭게 작성할 수 있는 공간입니다.</li><li>줄노트, 리스트, 카드 뷰 등 다양한 형태로 관리할 수 있습니다.</li><li>플립시계와 날씨 영역은 원하는 만큼 줄일 수 있습니다.</li></ul><br><img src="/m/a/t/5-2.png"><strong>일과 삶이 분리된 작업 리스트</strong><br><ul><li>업무와 개인 태스크를 나누어 정리할 수 있습니다.</li><li>미완료/완료 항목을 구분하여 해야할 일을 우선적으로 파악할 수 있습니다.</li><li>프로젝트를 태그로 구분할 수 있습니다.</li></ul><strong>주간/월간 캘린더</strong><br><ul><li>드래그 앤 드롭으로 일정 수정 가능합니다.</li><li>이미 완료된 항목들도 완료한 날짜 기준으로 조회할 수 있습니다.</li></ul><br><strong>이런 분께 추천합니다</strong><br><ul><li>할 일뿐 아니라 루틴, 감정, 목표까지 함께 기록하고 싶은 분</li><li>일과 삶을 분리하면서도 한 곳에서 관리하고 싶은 분</li><li>일주일 단위로 리듬을 정비하고 싶은 프리랜서</li></ul>',
 		type: 'notion',
 		link: 'https://www.notion.com/ko/templates/dm',
-		video: '',
+		video: 'https://www.youtube.com/embed/rzZQwbvU984?si=02Cmh9dNuqAiiwf3',
 		image: '/m/a/t/5.svg'
 	}
 ];
