@@ -31,7 +31,7 @@ export async function Start()
 		footerSection.appendChild(footerEl);
 	}
 
-	await renderSelectedPreviews(TEMPLATE_DATA, '#preview_template .grid', [1, 5, 3], 'template');
+	await renderSelectedPreviews(TEMPLATE_DATA, '#preview_template .grid', [1, 5, 6], 'template');
 	await renderSelectedPreviews(PORTFOLIO_DATA, '#preview_portfolio .grid', [1, 2, 3, 4, 5, 6], 'portfolio');
 
 	const form = document.getElementById('contact_form');
@@ -164,6 +164,16 @@ const TEMPLATE_DATA = [
 		link: 'https://www.notion.com/ko/templates/dm',
 		video: 'https://www.youtube.com/embed/rzZQwbvU984?si=02Cmh9dNuqAiiwf3',
 		image: '/m/a/t/5.svg'
+	},
+	{
+		id: 6,
+		title: '스타트업을 위한 QA시트',
+		description: '버그 재현부터 개선 확인까지, 스타트업 실무에 최적화된 QA 체크리스트 템플릿입니다.',
+		content: '<strong>빠른 개발 사이클 속에서도 품질을 놓치지 않도록</strong><br>작은조직에서도 빠르게 적용할 수 있는 QA 체크리스트입니다.<br>버그 재현 → 확인 요청 → 개선 확인 → 완료 처리까지<br>테스트의 전반적인 흐름을 관리할 수 있도록 구성되어 있습니다.<br><br><img src="/m/a/t/6-1.png"><br><strong>맞춤형 데이터베이스</strong><br><ul><li>서버 관리 방식에 맞는 시트 종류를 골라서 사용할 수 있습니다.</li><li>환경 필터를 통해 어떤 환경에서 발생한 이슈인지 직관적으로 체크해보세요.</li><li>버그, UI, 기능추가 등 다양한 유형의 이슈를 하나의 시트에서 관리해 보세요.</li></ul><img src="/m/a/t/6-2.png"><strong>이슈 작성 양식</strong><br><ul><li>목적에 맞는 이슈 내용을 쉽게 작성할 수 있도록 상세페이지 양식을 제공합니다.</li><li>[ 버그 / 기능요청 ]이슈 유형에 맞는 양식을 선택하여 작성해 보세요.</li></ul><img src="/m/a/t/6-3.png"><img src="/m/a/t/6-4.png"><br><strong>이슈 상태 관리</strong><br><ul><li>미완료, 완료, 진행현황, 우선순위로 구분하여 5가지 뷰를 제공하고있어요.</li></ul><br><strong>이런 분께 추천합니다</strong><br><ul><li>QA 인력이 별도로 없는 스타트업 운영팀</li><li>기획자/운영자가 직접 테스트를 진행하는 팀</li><li>빠른 릴리즈 주기에서도 품질을 놓치고 싶지 않은 팀</li></ul>',
+		type: 'notion',
+		link: 'https://www.notion.com/ko/templates/qa',
+		video: '',
+		image: '/m/a/t/6.svg'
 	}
 ];
 
