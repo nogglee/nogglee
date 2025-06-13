@@ -255,6 +255,7 @@ class FooterComponent extends HTMLElement
 		this.querySelector('#github').addEventListener('click', () => window.open('https://github.com/nogglee', '_blank'));
 		this.querySelector('#velog').addEventListener('click', () => window.open('https://velog.io/@nogglee/posts', '_blank'));
 		this.querySelector('#email').addEventListener('click', () => window.location.href = 'mailto:dev@nogglee.com?subject=문의&body=협업은 언제든지 환영합니다! 문의할 내용을 작성해 주세요.');
+		this.querySelector('#youtube').addEventListener('click', () => window.open('https://www.youtube.com/@nogglee', '_blank'));
 	}
 }
 customElements.define('footer-component', FooterComponent);
