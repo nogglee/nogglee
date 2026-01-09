@@ -24,7 +24,7 @@
 
 > 보유한 지식을 필요한 사람들에게 나누기 위해 콘텐츠를 제작합니다.  
 
-<sup>[IT PM을 위한 프로젝트 관리 노션 템플릿]([https://youtu.be/sm-oWq1UAjA](https://youtu.be/zFiU3F1b85c))</sup>  
+<sup>[IT PM을 위한 프로젝트 관리 노션 템플릿](https://youtu.be/zFiU3F1b85c)</sup>  
 <sup>[MVP QA 시트 스타트업을 위한 노션 템플릿](https://youtu.be/sm-oWq1UAjA)</sup>  
 <sup>[PM, 1인 개발자를 위한 무료 WBS 템플릿](https://youtu.be/8jMIBp5q6_I)</sup>  
 
