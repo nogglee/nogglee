@@ -1,6 +1,6 @@
 # NOGGLEE 이은지
 
-<sup>[링크드인](https://www.linkedin.com/in/nogglee/) ・ [노션 마켓플레이스](https://www.notion.com/ko/@nogglee) ・ [포트폴리오](https://nogglee.com?utm_source=github&utm_medium=readme&utm_campaign=profile) ・ [이메일](mailto:dev@nogglee.com)</sup>
+<sup>[링크드인](https://www.linkedin.com/in/nogglee/) ・ [노션 마켓플레이스](https://www.notion.com/ko/@nogglee) ・ [포트폴리오](https://nogglee.github.io/) ・ [이메일](mailto:dev@nogglee.com)</sup>
 
 생각을 구조화하고, 체계를 만들어가는 과정을 즐기는 개발자입니다.  
 
