@@ -34,6 +34,3 @@
 
 <sup>[Algorithm Study Log](https://github.com/nogglee/algorithm-study)</sup>  
 <sup>[Spring Boot Study Log](https://github.com/nogglee/springboot-study)</sup>  
-
-  
-test
