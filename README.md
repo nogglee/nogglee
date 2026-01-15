@@ -11,27 +11,21 @@
 ---
 
 
-# 활동
+### 활동
 
-### Blog
+<sup><b>Blog</b></sup>  
+<sup>학습 내용을 정리하며 사고 과정을 기록합니다.</sup>  
+<sup>📚 [웹 풀스택 데브코스 9기 학습기록](https://velog.io/@nogglee/series/devcourse)</sup>  
+<sup>📚 [Spring Boot 학습기록](https://velog.io/@nogglee/series/SpringBoot)</sup>  
 
-> 학습 내용을 정리하며 사고 과정을 기록합니다.  
+<sup><b>YouTube</b></sup>  
+<sup>보유한 지식을 필요한 사람들에게 나누기 위해 콘텐츠를 제작합니다.  </sup>  
+<sup>🎬 [IT PM을 위한 프로젝트 관리 노션 템플릿](https://youtu.be/zFiU3F1b85c)</sup>  
+<sup>🎬 [MVP QA 시트 스타트업을 위한 노션 템플릿](https://youtu.be/sm-oWq1UAjA)</sup>  
+<sup>🎬 [PM, 1인 개발자를 위한 무료 WBS 템플릿](https://youtu.be/8jMIBp5q6_I)</sup>  
 
-<sup>[웹 풀스택 데브코스 9기 학습기록](https://velog.io/@nogglee/series/devcourse)</sup>  
-<sup>[Spring Boot 학습기록](https://velog.io/@nogglee/series/SpringBoot)</sup>  
-
-### YouTube
-
-> 보유한 지식을 필요한 사람들에게 나누기 위해 콘텐츠를 제작합니다.  
-
-<sup>[IT PM을 위한 프로젝트 관리 노션 템플릿](https://youtu.be/zFiU3F1b85c)</sup>  
-<sup>[MVP QA 시트 스타트업을 위한 노션 템플릿](https://youtu.be/sm-oWq1UAjA)</sup>  
-<sup>[PM, 1인 개발자를 위한 무료 WBS 템플릿](https://youtu.be/8jMIBp5q6_I)</sup>  
-
-### Study
-
-> 개념을 머리로만 이해하기보다 직접 구현하며 익히는 학습 방식을 선호합니다.
-
-<sup>[Algorithm Study Log](https://github.com/nogglee/algorithm-study)</sup>  
-<sup>[Spring Boot Study Log](https://github.com/nogglee/springboot-study)</sup>  
+<sup><b>YouTube</b></sup>  
+<sup>개념을 머리로만 이해하기보다 직접 구현하며 익히는 학습 방식을 선호합니다.</sup>  
+<sup>🌱 [Algorithm Study Log](https://github.com/nogglee/algorithm-study)</sup>  
+<sup>🌱 [Spring Boot Study Log](https://github.com/nogglee/springboot-study)</sup>  
   
