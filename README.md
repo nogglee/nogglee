@@ -12,7 +12,8 @@
 <sup>핵심역량과 성과를 담은 포트폴리오입니다.</sup>  
 <sup>🚀 [포트폴리오](https://nogglee.com)</sup>  
 
-<sup><b>DevLog</b></sup>  
+<sup><b>DevLog</b></sup>
+<sup>프로덕트 개발 과정에서의 고민과 선택을 기록합니다.</sup>  
 <sup>🎯 [회고 관리 서비스 TOMADO 개발기](https://velog.io/@nogglee/series/tomado)</sup>  
 
 <sup><b>Blog</b></sup>  
