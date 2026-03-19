@@ -14,7 +14,7 @@
 
 <sup><b>DevLog</b></sup>  
 <sup>프로덕트 개발 과정에서의 고민과 선택을 기록합니다.</sup>   
-<sup>🎯 [회고 관리 서비스 TOMADO 개발기](https://velog.io/@nogglee/series/tomado)</sup>  
+<sup>🎯 [투두・회고 통합관리 서비스 TOMADO 개발기](https://velog.io/@nogglee/series/tomado)</sup>  
 
 <sup><b>Blog</b></sup>  
 <sup>학습 내용을 정리하며 사고 과정을 기록합니다.</sup>  
