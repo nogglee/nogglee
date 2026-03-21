@@ -21,8 +21,6 @@
 <sup>📚 [컴퓨팅 사고력 기르기](https://velog.io/@nogglee/series/algorithm)</sup>  
 <sup>📚 [Node.js 기반 백엔드 개념잡기](https://velog.io/@nogglee/series/node)</sup>  
 <sup>📚 [TypeScript와 React로 프론트 역량 키우기](https://velog.io/@nogglee/series/frontend)</sup>  
-<sup>📚 [SpringBoot 맥락 읽기](https://velog.io/@nogglee/series/springboot)</sup>   
-<sup>📚 [웹 개발을 위한 협업 방법](https://velog.io/@nogglee/series/collab)</sup>  
 
 <sup><b>YouTube</b></sup>  
 <sup>보유한 지식을 필요한 사람들에게 나누기 위해 콘텐츠를 제작합니다.</sup>  
