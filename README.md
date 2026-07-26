@@ -14,13 +14,13 @@
 
 <sup>🚀 <b>Product</b></sup>  
 <sup>불편함을 해결하는 프로덕트를 개발합니다.</sup>  
-<sup>[웹 QA 피드백 플랫폼](https://feedbox.nogglee.com/)</sup>
+<sup>[웹 QA 피드백 플랫폼](https://feedbox.nogglee.com/)</sup>  
 <sup>[비즈니스 도메인 기반 QA 에이전트](https://github.com/nogglee-crew/domain-driven-qa)</sup>  
 
 <sup>🗒️ <b>DevLog</b></sup>  
 <sup>프로덕트 개발 과정에서의 문제 정의, 기술 선택, 개선 과정을 기록합니다.</sup>   
-<sup>[3,800명이 모인 서비스를 종료하며 배운 것들](https://velog.io/@nogglee/retrospect-2)</sup>
-<sup>[투두・회고 통합관리 서비스 TOMADO 개발기](https://velog.io/@nogglee/series/tomado)</sup>  
+<sup>[3,800명이 모인 서비스를 종료하며 배운 것들](https://velog.io/@nogglee/retrospect-2)</sup>  
+<sup>[투두・회고 통합관리 서비스 TOMADO 개발기](https://velog.io/@nogglee/series/tomado)</sup>    
 
 <sup>📚 <b>Blog</b></sup>  
 <sup>학습 내용을 정리하며 사고 과정을 기록합니다.</sup>  
