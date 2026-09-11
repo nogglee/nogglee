@@ -14,8 +14,7 @@
 
 <sup>🚀 <b>Product</b></sup>  
 <sup>불편함을 해결하는 프로덕트를 개발합니다.</sup>  
-<sup>[웹 QA 피드백 플랫폼](https://feedbox.nogglee.com/)</sup>  
-<sup>[비즈니스 도메인 기반 QA 에이전트](https://github.com/nogglee-crew/domain-driven-qa)</sup>  
+<sup>[AI PM 삐빕](https://bbibib.com/)</sup>  
 
 <sup>🗒️ <b>DevLog</b></sup>  
 <sup>프로덕트 개발 과정에서의 문제 정의, 기술 선택, 개선 과정을 기록합니다.</sup>   
